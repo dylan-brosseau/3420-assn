@@ -1,0 +1,13 @@
+# Enable basic authentication and point to password file
+AuthName "Password protected directory"
+AuthType Basic
+AuthUserFile /home/dylanbrosseau/pwd/.htpasswd
+
+# Set 'w3' if this is a request from the validator
+SetEnvIf User-Agent ^Validator.nu w3
+
+# Require either 'w3' or a valid user
+<RequireAny>
+    Require env w3
+    Require valid-user
+</RequireAny>
