@@ -3,48 +3,77 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="index.html">Back to Main List</a>
+    <a href="my_profile.html">My Profile</a> 
     <title>Edit List Item</title>
-    <a href="index.html">Home</a>
-    <a href="login.html">Login</a>
-    <a href="register.html">Register</a>
-    <a href="edit-item.html">Edit Item</a>
 </head>
 <body>
-    <h1>Edit List Test</h1>
+    <h1>Edit List Item</h1>
 
-    <!-- Edit Item Form -->
-    <form id="edit-item-form">
-        
-        <label for="title">Title:</label>
-        <input type="text" id="title" value="Bucket List Item Title" disabled>
+    <!-- User can edit list -->
+    <form method="POST" >
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
         
         <div>
             <label for="description">Description:</label>
-            <input type="text" id="description" value="Bucket List Item Description" disabled>
-             
+            <textarea id="description" name="description" required></textarea>
         </div>
+
+        <fieldset>
+            <legend>Status</legend>
+              <div>
+                <input type="radio" name="status" id="completed" value="c" required>
+                <label for="completed">Completed</label>
+              </div>
+              <div>
+                <input type="radio" name="status" id="notcompleted" value="r" required>
+                <label for="notcompleted">Not Completed</label>
+              </div>
+            
+          </fieldset>
         
-        <div>
-            <label for="rating">Rating:</label>
-            <input type="range" id="rating" min="1" max="5" step="1" value="3">
-        </div>
+        <fieldset>
+            <div>
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                <option value="travel">Travel</option>
+                <option value="adventure">Adventure</option>
+                <option value="career">Career</option>
+                <option value="personal">Personal</option>
+                <option value="other">Other</option>
+                </select>
+            </div>
+        </fieldset>
         
-        <div>
-            <label for="completion-date">Completion Date:</label>
-            <input type="date" id="completion-date">
+        <fieldset>
+            <legend>Rating</legend>
+            <div>
+                <input type="range" id="rating" name="rating" min="1" max="5" value="3">
+            </div>
+        </fieldset>
         
-        </div>
-        
-        <div>
-            <label for="details">Details:</label>
-            <textarea id="details" rows="4" cols="50"></textarea>
-        </div>
+        <fieldset>
+            <legend>Completion Date</legend>
+            <div>
+                <input type="date" id="completion-date" name="completion-date" value="2023-09-01" required>
+            </div>
+        </fieldset>
+      
+        <fieldset>
+            <legend>Details</legend>
+            <div>
+                <textarea id="details" name="details" required></textarea>
+            </div>
+        </fieldset>
         
         <div>
             <label for="proof">Proof (Image Upload):</label>
-            <input type="file" id="proof">
+            <input type="file" id="proof" name="proof" accept="image/*">
         </div>
-        
+
         <button type="submit">Save Changes</button>
     </form>
 </body>

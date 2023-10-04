@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
 </head>
+
 <body>
     <h1>User Login</h1>
     <form method="POST">
@@ -14,11 +15,11 @@
           <input type="text" id="username" name="username" required>
         </div>
        
+        <!-- Password -->
         <div>
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required>
         </div>
-        <!-- Password -->
         
 
         <!-- Remember Me -->
@@ -32,8 +33,18 @@
           <a href="forgot_password.html">Forgot Password?</a>
         </div>
 
+        <!-- Register Link-->
+        <div>
+            <a href="register.html">Sign Up Here</a>
+        </div>
+
         <!-- Submit Button -->
-        <input type="submit" value="Login">
+        <button type="submit">Submit</button>
+
+        <!-- This is used when eventaully the user signs in they can go to the next page-->
+        <!-- Since we dont have the means to do that yet just provided a link to our main page-->
+        <p>Successfully logged in! Click below to access your main page:</p>
+        <a href="index.html">Go to Main Page</a>
     </form>
 </body>
 </html>
