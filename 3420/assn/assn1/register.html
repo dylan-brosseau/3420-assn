@@ -1,78 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
-    <a href="index.html">Home</a>
-    <a href="login.html">Login</a>
-    <a href="register.html">Register</a>
-    <a href="edit-item.html">Edit Item</a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <a href="login.html">Back to Login Page</a> 
+    <title>User Registration</title>
 </head>
-    <hr>
-  </head>
-
-  <body>
-    <h1>Register</h1>
-    <div>
-        <h3>Account Information</h3>
-        <form id="register" id="register">
+<body>
+    <h1>User Registration</h1>
+    <form method="POST">
+        <!-- User Information -->
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
         
-            <div>
-                <label>Create Username: </label>
-                <input type="text" name="username" id="username">
-            </div>
-            <br>           
-            <div>
-                <label>Create password: </label>
-                <input type="password" id="create_password">
-            
-
+        <div>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
         
-                <label>Confirm Password: </label>
-                <input type="password" id="confirm_password">
-            </div>
-        
-            
-            <h3>Personal Infromation</h3>
-            <div>
-                <label>Full Name: </label>
-                <input type="text" name="fullname" id="fullname">
-            </div>         
-            <br>
-            <div>
-                <label>Email: </label>
-                <input type="email" name="email" id="email" placeholder="example@example.com">
-            </div>
-            <h3>Create Your List</h3>
-            <div>
-                <label>List Title: </label>
-                <input type="text" name="list_title" id="list_title">
-            </div>
-            <br>
-            <div>
-                <label for="description">Write a description for your list: </label>
-                <textarea name="description" id="description" cols="60" rows="2"></textarea>
-
-            </div>
-            <br>
-
-            <div>
-                <label for="access">I'd like my list to be </label>
-                <select name="access" id="access">
-                    <option value="Private" selected>Private</option>
-                    <option value="Public">Public</option>
-                </select>
-            </div>
-
-            <br>
-
-            <button type="submit">Submit</button>
-        </form>
-
-
-                  
-    </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
     
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+   
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+   
 
-  </body>
+        <!-- List Information -->
+        <h2>List Information</h2>
+        
+        <div>
+            <label for="listName">List Name:</label>
+            <input type="text" id="listName" name="listName" required>
+        </div>
+        
+        <div>
+            <label for="listDescription">List Description:</label>
+            <textarea id="listDescription" name="listDescription" rows="2" required></textarea>
+        </div>
+        
+        <div>
+            <label for="publicList">Make List Public:</label>
+            <input type="checkbox" id="publicList" name="publicList">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
