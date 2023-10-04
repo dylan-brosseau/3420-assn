@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab3</title>
+  <img src="img/wonka.png" alt="Wonka Logo" height="230" width="300">
+</head>
+
+<body>
+  <header></header>
+
+  <div>
+    <nav>
+      <ul>
+        <li><a href="voting.html">Home</a></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </nav>
+
+    <main>
+      <form id="form_1" name="form_1" action="voting.html" method="post">
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+
+        <fieldset>
+          <Legend>Perspective</Legend>
+          <div>
+            <input type="radio" name="perspective" id="customer" value="c">
+            <label for="customer">Customer</label>
+          </div>
+          <div>
+            <input type="radio" name="perspective" id="reseller" value="r">
+            <label for="reseller">Reseller</label>
+          </div>
+          <div>
+            <input type="radio" name="perspective" id="oompa-loompa" value="o">
+            <label for="oompa-loompa">Oompa-Loompa</label>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="product">Product Choice</label>
+          <select name="product" id="product">
+            <option value="wonka_bar" selected>Wonka Bar</option>
+            <option value="gobstopper">Everlasting Gobstopper</option>
+          </select>
+        </div>
+
+        <button type="submit" name="submit" id="submit">Submit Vote</button>
+      </form>
+    </main>
+  </div>
+
+  <footer>
+    <h6>&copy; 2023 - Dylan Brosseau</h6>
+  </footer>
+</body>
+
+</html>
