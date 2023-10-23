@@ -3,35 +3,71 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a href="index.html">Back to Main List</a>
+    
     <title>My Profile</title>
 </head>
+
 <body>
-        <!-- We have a user profile to provide more customization to the user and allow them to go into
+    <nav>
+        <ul class="navigation">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="my_profile.html">My Profile</a></li>
+            <li><a href="list.html">My Public Lists</a></li>
+            <li><a href="search.html">Search</a></li>    
+            <li><a href="add_list.html">Create a New List</a></li>      
+  
+        </ul>
+    </nav>
+    <hr />
+    <div class="profile_information">
+         <!-- We have a user profile to provide more customization to the user and allow them to go into
         more detail about themselves, none of these feild are required and the user can fill out what they
         like-->
         <h1>My Profile</h1>
+        <ul>
+            <li>
+                <label for="username">Username:</label>
+                <span id="username">JohnDoe123</span>
+            </li>
 
-        <!-- This username area will already be filled out because we ask for username in register-->
+            <li>
+                <label for="fullname">Full Name:</label>
+                <span id="fullname">John Doe</span>
+            </li>
+
+            <li>
+                <label for="email">Email:</label>
+                <span id="email">johndoe@example.com</span>
+            </li>
+
+            <li>
+                <label for="email">Age:</label>
+                <span id="email">20</span>
+            </li>
+
+            <li>
+                <label for="email">Location:</label>
+                <span id="email">Peterborough</span>
+            </li>
+        </ul>
+            
         <div>
-            <label for="username">Username:</label>
-            <span id="username">JohnDoe123</span>
+            <label for="email">Bio:</label>
+            <span id="email">I am interested in....</span>
         </div>
-         <!-- This fullname area will already be filled out because we ask for username in register-->
         <div>
-            <label for="fullname">Full Name:</label>
-            <span id="fullname">John Doe</span>
+            <h4>Socials</h4>
+            <ul class="socials">
+                <li>@john.doe</li>
+                <li>@doejohn</li>
+            </ul>
         </div>
-        <!-- This email area will already be filled out because we ask for username in register-->
-        <div>
-            <label for="email">Email:</label>
-            <span id="email">johndoe@example.com</span>
-        </div>
-        <!-- Asking for date of birth-->
-        <div>
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob">
-        </div>
+    </div>
+       
+    <h2> Edit Profile</h2>
+       
+    <form class="profile_information">
+         
         <!-- Asking for address-->
         <div>
             <label for="location">Location:</label>
@@ -65,6 +101,9 @@
             <input type="text" id="occupation" name="occupation" placeholder="Enter your occupation">
         </div>
         <button type="submit">Save Profile</button>
+        
     </form>
+       
+    
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Create New List</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="navigation">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="my_profile.html">My Profile</a></li>
+            <li><a href="list.html">My Public Lists</a></li>
+            <li><a href="search.html">Search</a></li> 
+            <li><a href="add_list.html">Create a New List</a></li>      
+     
+        </ul>
+    </nav>
+    <hr />
+
+    <form class="add_list" name="add_list" id="add_list">
+        <div>
+            <label>List Title: </label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div>
+            <label>Description: </label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="access">I'd like my list to be </label>
+            <select name="access" id="access">
+                <option value="Private" selected>Private</option>
+                <option value="Public">Public</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+
+     
+    </form>
+
+
+</body>
