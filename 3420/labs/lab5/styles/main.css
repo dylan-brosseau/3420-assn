@@ -1,0 +1,117 @@
+@import 'reset.css';
+
+
+/****************************************
+** Page Section Containers
+*****************************************/
+
+/* The root of the document (for webpages, the <html> element) */
+:root {
+  /* Base font stack and font size */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+
+  /* Base colors for things outside the <main> */
+  background-color: mediumorchid;
+  color: white;
+}
+
+header {
+  /* Gradient from pink to (background) purple behind the header image */
+  background: linear-gradient(to bottom, deeppink, transparent);
+}
+
+main {
+  background-color: white;
+  color: black;
+}
+
+
+/****************************************
+** Header Styles
+*****************************************/
+
+h1 {
+  color: #612ca8;
+  font-weight: 600; /* semibold */
+  font-size: 2rem;
+}
+
+
+/****************************************
+** Nav & Button Styles
+*****************************************/
+
+/* Default state for buttons and nav links styled to look like buttons,
+ * including ':visited' to override the default */
+nav a,
+nav a:visited,
+button {
+  color: white;
+  text-decoration: none; /* remove default underline */
+  background-color: deeppink;
+  cursor: pointer;
+}
+
+/* Hover state for buttons and nav links */
+nav a:hover,
+nav a:visited:hover,
+button:hover {
+  color: deeppink;
+  background-color: white;
+}
+
+/* "Mid-click" state for buttons and nav links */
+nav a:active,
+nav a:visited:active,
+button:active {
+  color: deeppink;
+  background-color: #f1f1f1; /* slightly darker white to indicate click */
+}
+
+
+/****************************************
+** Form Styles
+*****************************************/
+
+fieldset {
+  border: 0.15em solid deeppink;
+}
+
+/* Fieldset's label */
+legend {
+  background-color: deeppink;
+  color: white;
+  font-style: italic;
+}
+
+/* Dropdown list's label */
+label[for="choice"] {
+  font-weight: 600; /* slightly bolder */
+  font-size: 1.1em; /* slightly larger */
+  color: #612ca8;
+}
+
+/* Dropdown list */
+#choice {
+  font-size: 1.1em;
+}
+
+
+/****************************************
+** Other General Page Styles
+*****************************************/
+
+a,
+a:visited {
+  color: #612ca8;
+}
+
+
+/****************************************************************************
+*****************************************************************************
+** PUT YOUR WORK FOR LAB 5 AFTER THIS COMMENT
+*****************************************************************************
+*****************************************************************************/
+
+
