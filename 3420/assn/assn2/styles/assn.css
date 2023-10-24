@@ -10,18 +10,19 @@
     color: black;
   }
 
- .login{
+  .login, .forgot, .register, .myprofile{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("new.jpg") no-repeat;
+    background: url("../img/new.jpg") no-repeat;
     font-family: "Poppins", sans-serif;
     background-size: cover;
     background-position: center;
 }
 
-.loginpage{
+
+.loginpage, .forgotpasspage, .myprofilepage{
     width: 300px;
     background: transparent;
     border:2px solid rgba(255,255,255,0.2);
@@ -32,19 +33,40 @@
     padding: 30px 40px;
 }
 
-.loginpage h1{
-    font-size: 45px;
+.registerpage{
+    width: 300px;
+    height: 600px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+
+.loginpage h1, .forgotpasspage h1, .registerpage h1, .myprofilepage h1{
+    font-size: 40px;
     text-align: center;
 }
 
-.usernamepassword{
+.registerpage h2{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 185px;
+    margin-bottom: 20px;
+}
+
+.usernamepassword, .forgotinfo, .registerinfo, .registerlist {
     position: relative;
     width: 100%;
     height: 50px;
     margin: 30px 0;
 }
 
-.usernamepassword input{
+
+.usernamepassword input, .forgotinfo input {
     width: 97%;
     height: 90%;
     background: transparent;
@@ -55,9 +77,26 @@
     font-size: 16px;
     color: #fff;
     padding: 0.2em;
+    margin-bottom: 6px;
 }
 
-.usernamepassword input::placeholder{
+.registerlist input, .registerinfo input, .registerlist textarea, .myprofilepage input, .myprofilepage textarea {
+    width: 97%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.2em;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
+.usernamepassword input::placeholder, .forgotinfo input::placeholder, .registerinfo input::placeholder, .registerlist input::placeholder , .registerlist textarea::placeholder, .myprofilepage input::placeholder , .myprofile textarea::placeholder{
     color: #fff;
 }
 
@@ -76,6 +115,15 @@
      margin: -15px 0 15px;
 }
 
+.registercheckbox{
+    display: inline-block;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 6px;
+  
+}
 .checkboxlogin input{
     accent-color: #fff;
     margin-right: 3px;
@@ -90,7 +138,7 @@
     text-decoration: underline;
 }
 
-.loginpage button{
+.loginpage button, .forgotpasspage button, .registerpage button, .myprofilepage button{
     width: 100%;
     height: 40px;
     background: #fff;
@@ -102,6 +150,7 @@
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    margin-top: 5px;
 }
 
 .loginlinks{
@@ -118,4 +167,36 @@
 
 .loginlinks p a:hover{
     text-decoration: underline;
+}
+
+.forgotpasspage p{
+    font-size: 17px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.forgot a, .register a,.loginhead a,.myprofile a{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+   
+}
+
+.forgot a::after, .register a::after, .loginhead a::after, .myprofile a::after{
+   content: '';
+   height: 3px;
+   width: 0%;
+   background: red;
+   position: absolute;
+   left: 0;
+   bottom:-10px;
+   transition: 0.5s;
+}
+
+.forgot a:hover:after, .register a:hover:after,.loginhead a:hover:after,.myprofile a:hover:after{
+    width: 100%;
 }
