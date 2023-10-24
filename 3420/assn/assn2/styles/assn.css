@@ -20,6 +20,7 @@
   .page_list_title{font-size: 36px; font-weight: bold; text-align:left; padding: 1em;}
   .index_page h2{font-size: 30px; font-weight: bold; padding:0.3em;}
   h3{font-size: 26px; font-weight: bold;}
+  #list_item_page_title{font-size: 30px;font-weight: bold; text-align: left;}
 
  
   .parent{
@@ -161,6 +162,26 @@
     font-weight: 600;
 
 }
+
+.paper_container{
+    display:flex;
+    width:60vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(img/line_bg2.jpg);
+    border-radius: 35px;
+}
+.paper_container *{
+    font-family: 'Indie Flower', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    margin-left: 1em;
+    padding: 0.5em;
+}
+
 
   .login, .forgot, .register, .myprofile{
     display: flex;
@@ -359,7 +380,8 @@
 .forgot a:hover:after, .register a:hover:after,.loginhead a:hover:after,.myprofile a:hover:after{
     width: 100%;
 }
-  
+
+
 
 
   
