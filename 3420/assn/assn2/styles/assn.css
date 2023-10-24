@@ -9,7 +9,7 @@
     background-color: rgba(215, 214, 214, 0.952);
     color: rgb(33, 30, 30);
   }
-  .index_page{
+  /*.index_page, .public_list_page*/ body{
     background-image: url(img/mountain.jpg);
     background-repeat: no-repeat;
     background-size:cover;
@@ -17,7 +17,7 @@
     
   }
 
-  #index_list_title{font-size: 36px; font-weight: bold; text-align:left; padding: 1em;}
+  .page_list_title{font-size: 36px; font-weight: bold; text-align:left; padding: 1em;}
   .index_page h2{font-size: 30px; font-weight: bold; padding:0.3em;}
   h3{font-size: 26px; font-weight: bold;}
 
@@ -30,7 +30,7 @@
 
   }
 
-  .bucket_lists{
+  .bucket_list_parent{
     font-family: 'Indie Flower', cursive;
     font-size: 19px;
     font-weight: 300;
