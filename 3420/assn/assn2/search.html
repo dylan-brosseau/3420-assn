@@ -3,37 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <title>Search</title>
-    <!-- Include any necessary CSS styles here -->
+    <link rel="stylesheet" href="styles/assn.css" />
+    <title>Discover</title>
+    
 </head>
-<body>
+<body class="search_page">
     <nav>
-        <ul class="navigation">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="my_profile.html">My Profile</a></li>
-            <li><a href="list.html">My Public Lists</a></li>
-            <li><a href="search.html">Search</a></li>      
-            <li><a href="add_list.html">Create a New List</a></li>      
-
-        </ul>
+        <a href="login.html">Login</a>
+        <a href="my_profile.html">My Profile</a>
+        <a href="list.html">My Public Lists</a>
+        <a href="search.html">Search</a>   
+        <a href="add_list.html">Create a New List</a>     
+        <a href="index.html">Index</a>  
     </nav>
-    <header>
-        <h1>Search</h1>
-        <!-- Include any header content or navigation links here -->
-    </header>
+    
 
-    <main>
-        <section>
-            <h2>Search for Bucket List Items</h2>
+    <div class="parent">
+        <div class="container1">
+            <h2>Discover Bucket List Items</h2>
             
             <label for="searchInput">Search:</label>
-            <input type="text" id="searchInput" name="searchInput" placeholder="Enter keywords...">
+            <input class="reg_input" type="text" id="searchInput" name="searchInput" placeholder="Enter keywords...">
             <button type="submit">Search</button>
             
-        </section>
+        
 
-        <section>
+        
             <h2>Search Results</h2>
             <ul>
                 <!-- Display search results here -->
@@ -41,18 +36,16 @@
                 <li><a href="view_item.html">Search Result 2</a></li>
                 <!-- Repeat this pattern for each result -->
             </ul>
-        </section>
+        </div>
 
-        <section>
+        <div class="container2">
             <h2>Feeling Lucky?</h2>
             <button id="feelingLuckyButton">I'm Feeling Lucky</button>
             <!-- Display a random suggestion here -->
             <p><a href="view_item.html">Random Suggestion: Bucket List Item</a></p>
-        </section>
-    </main>
+        </div>
+    </div>
 
-    <footer>
-        &copy; Lucas-Dacruz-2023
-    </footer>
+    
 </body>
 </html>
