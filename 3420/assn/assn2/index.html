@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/assn.css">
 
-    <title>Bucket List</title>
+    <title>Index</title>
 </head>
-<body>
+<body class="index_page">
     <nav>
         <ul class="navigation">
             <li><a href="login.html">Login</a></li>
@@ -15,92 +15,107 @@
             <li><a href="list.html">My Public Lists</a></li>
             <li><a href="search.html">Search</a></li>   
             <li><a href="add_list.html">Create a New List</a></li>      
+            <li><a href="index.html">Index</a></li>   
+
    
         </ul>
     </nav>
    
     <hr />
-    <h1>My Bucket Lists</h1>
+    
+    <div class="parent">
+        <div class="bucket_lists">
+            
+            <ul class="list_of_lists">
+                <h1 id="index_list_title">My Bucket Lists</h1>
+                <h2>Before I'm Married</h2>
+                <!-- List of Bucket List Items -->
+                <ul class="bucket_list">
+                    <!--List Item 1-->
+                    <li>
+                        <strong>Title:</strong> Visit Paris<br>
+                        <strong>Description:</strong> Explore the romantic city of Paris.<br>
+                        <strong>Status:</strong> Completed<br>
+                        <!-- Edit and Delete Options -->
+                        <a href="view_item.html">View Details</a> |
+                        <a href="edit_item.html">Edit</a> |
+                        <a href="#">Delete</a>
+                    </li>
+        
+                    <!-- List item 2 -->
+                    <li>
+                        <strong>Title:</strong> Climb Mount Everest<br>
+                        <strong>Description:</strong> Conquer the world's highest peak.<br>
+                        <strong>Status:</strong> Not Completed<br>
+                        <!-- Edit and Delete Options -->
+                        <a href="edit_item.html">Edit</a> |
+                        <a href="#">Delete</a>
+                    </li>
+                    <!-- Here we can add more fake lists -->
+                </ul>
+        
+                <h2>Before I Die</h2>
+                <ul class="bucket_list">
+                    <!--List Item 1-->
+                    <li>
+                        <strong>Title:</strong>Travel to iceland<br>
+                        <strong>Description:</strong>Drink an icelandic beer.<br>
+                        <strong>Status:</strong>Completed<br>
+                        <!-- Edit and Delete Options -->
+                        <a href="view_item.html">View Details</a> |
+                        <a href="edit_item.html">Edit</a> |
+                        <a href="#">Delete</a>
+                    </li>
+        
+                    <!-- List item 2 -->
+                    <li>
+                        <strong>Title:</strong> Climb Mount Everest<br>
+                        <strong>Description:</strong> Conquer the world's highest peak.<br>
+                        <strong>Status:</strong> Not Completed<br>
+                        <!-- Edit and Delete Options -->
+                        <a href="edit_item.html">Edit</a> |
+                        <a href="#">Delete</a>
+                    </li>
+                    <!-- Here we can add more fake lists -->
+                </ul>
+        
+            </ul>
+        </div>
 
-    <ul class="list_of_lists">
+        <div class="add_item">
+            
 
-        <h2>Before I'm Married</h2>
-        <!-- List of Bucket List Items -->
-        <ul class="bucket_list">
-            <!--List Item 1-->
-            <li>
-                <strong>Title:</strong> Visit Paris<br>
-                <strong>Description:</strong> Explore the romantic city of Paris.<br>
-                <strong>Status:</strong> Completed<br>
-                <!-- Edit and Delete Options -->
-                <a href="view_item.html">View Details</a> |
-                <a href="edit_item.html">Edit</a> |
-                <a href="#">Delete</a>
-            </li>
+            <form class="add_item_form" method="POST">
+                <h2>Add New List Item</h2>
 
-            <!-- List item 2 -->
-            <li>
-                <strong>Title:</strong> Climb Mount Everest<br>
-                <strong>Description:</strong> Conquer the world's highest peak.<br>
-                <strong>Status:</strong> Not Completed<br>
-                <!-- Edit and Delete Options -->
-                <a href="edit_item.html">Edit</a> |
-                <a href="#">Delete</a>
-            </li>
-            <!-- Here we can add more fake lists -->
-        </ul>
+                <div>
+                    <label for="list_select">Add to list: </label>
+                    <select class="hw_input" name="list_select" id="list_select">
+                        <option value="Before I'm Married" selected>Before I'm Married</option>
+                        <option value="Before I die">Before I Die</option>
+                    </select>
+            
+                </div>
+                <div>
+                    <label for="title">Title:</label>
+                    <input class="hw_input" type="text" id="title" name="title" required><br>
+                </div>
+            
+                <fieldset>
+                    <legend>Description:</legend>
+                                   
+                    <textarea class="hw_input" id="new_item_description" name="description" required></textarea>
+                    
+                </fieldset>
 
-        <h2>Before I Die</h2>
-        <ul class="bucket_list">
-            <!--List Item 1-->
-            <li>
-                <strong>Title:</strong>Travel to iceland<br>
-                <strong>Description:</strong>Drink an icelandic beer.<br>
-                <strong>Status:</strong>Completed<br>
-                <!-- Edit and Delete Options -->
-                <a href="view_item.html">View Details</a> |
-                <a href="edit_item.html">Edit</a> |
-                <a href="#">Delete</a>
-            </li>
-
-            <!-- List item 2 -->
-            <li>
-                <strong>Title:</strong> Climb Mount Everest<br>
-                <strong>Description:</strong> Conquer the world's highest peak.<br>
-                <strong>Status:</strong> Not Completed<br>
-                <!-- Edit and Delete Options -->
-                <a href="edit_item.html">Edit</a> |
-                <a href="#">Delete</a>
-            </li>
-            <!-- Here we can add more fake lists -->
-        </ul>
-
-    </ul>
+                <button type="submit" class="hw_input" id="submit_new_item">Submit</button>
+            </form>
+        </div>
+    </div>
+   
+    
 
     <!-- Option to add a new list item-->
-    <h2>Add New List Item</h2>
-    <form method="POST">
-        <div>
-            <label for="list_select">Add to list: </label>
-            <select name="list_select" id="list_select">
-                <option value="Before I'm Married" selected>Before I'm Married</option>
-                <option value="Before I die">Before I Die</option>
-            </select>
-        
-        </div>
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required><br>
-        </div>
-        
-        <fieldset>
-            <legend>Description:</legend>
-            <div>                
-                <textarea id="description" name="description" required></textarea>
-            </div>
-        </fieldset>
-
-        <button type="submit">Submit</button>
-    </form>
+    
 </body>
 </html>

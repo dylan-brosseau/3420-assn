@@ -2,11 +2,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 :root {
     /* Base font stack and font size */
-    font-family: 'Indie Flower', cursive;
-    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-size: 19px;
   
     /* Base colors for things outside the <main> */
-    background-image: url(line_bg2.jpg);
-    color: black;
+    background-color: rgba(215, 214, 214, 0.952);
+    color: rgb(33, 30, 30);
   }
+  .index_page{
+    background-image: url(img/mountain.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 100vh;
+    
+  }
+
+  #index_list_title{font-size: 36px; font-weight: bold; text-align:left; padding: 1em;}
+  .index_page h2{font-size: 30px; font-weight: bold; padding:0.3em;}
+  h3{font-size: 26px; font-weight: bold;}
+
+ 
+  .parent{
+    display:flex;
+    align-items: center;
+    padding: 1em;
+    
+
+  }
+
+  .bucket_lists{
+    font-family: 'Indie Flower', cursive;
+    font-size: 19px;
+    font-weight: 300;
+    color: rgb(61, 60, 60);
+    background-image: url(img/line_bg2.jpg);
+    padding-left: 5em;
+    padding-top: 1em;
+    margin-right: auto;
+    margin-left: 2em;
+    display: flex;
+    width: 40vw;
+    height: 70vh;
+    align-items: start;
+    justify-content: flex-start;
+    border: 0.2em solid rgb(32, 30, 30);
+    border-radius: 0.4em;  
+    overflow:auto;  
+  }
+  .bucket_list >*{
+    list-style-type:circle;
+    padding-left: 1em;
+    padding-top:0.3em;
+    padding-bottom:0.3em;
+  }
+ 
+  .add_item {
+    display:flex;
+    padding-left: 5em;
+    padding-top: 0em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    width:40vw;
+    height:70vh;
+    align-items: flex-start;
+    
+  }
+  .add_item_form {
+    font-family: 'Indie Flower', cursive;
+    display:flex;
+    border: 0.2em solid rgb(21, 21, 21);
+    border-radius: 0.4em;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+    width:40vw;
+    height:50vh;
+    padding-top:0.5em;
+    padding-bottom:0.3em;
+    background-color: rgb(160, 159, 155);
+    background-image: url(img/line_bg2.jpg);
+
+  }
+  .add_item_form >*{
+    padding: 1em;
+    flex:none;
+  }
+
+  .hw_input {
+    font-family: 'Indie Flower', cursive;
+    border-radius: 20px;
+  }
+
+   .add_item_form textarea, input, button{
+    width: 20em !important;
+  }
+  #submit_new_item{
+    position:relative;
+    top:30%;
+    border-radius: 20px;
+
+  }
+
+  nav{
+    display: flex;
+    width:96vw;
+    margin-left: 1em;
+    margin-right: 1em;
+    align-items: center;
+    height:3rem;
+    background-color: rgba(240, 248, 255, 0.285);
+    border: 0.2em solid rgb(21, 21, 21);
+
+
+  }
+  nav >*{
+    color: black;
+    padding-left: 4.5em;
+    font-weight: 600;
+  }
+
+  
+
+
   
