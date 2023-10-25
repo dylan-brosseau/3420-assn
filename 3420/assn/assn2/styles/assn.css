@@ -1,5 +1,343 @@
 @import url('./reset.css');
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+/*:root{
+    width: 100%;
+    height:100vh;
+    background-image: linear-gradient(rgba(15, 4, 0, 0.215),rgba(0, 0, 0, 0.306),rgba(0, 0, 0, 0.11)), url('../img/new.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+
+.login ul{
+    display: flex;
+    float: right;
+    list-style: none;
+}
+
+.login ul li{
+    margin: 1em;
+    flex-grow: 1;
+    display: inline-block;
+    position: relative;
+}
+.login ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.login ul li::after{
+   content: '';
+   height: 3px;
+   width: 0%;
+   background: red;
+   position: absolute;
+   left: 0;
+   bottom:-10px;
+   transition: 0.5s;
+}
+
+.login ul li:hover:after{
+    width: 100%;
+} */
+
+ .login, .forgot, .register, .myprofile, .edititem, .index, .viewitem, .search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("../img/new.jpg") no-repeat;
+    font-family: "Poppins", sans-serif;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.loginpage, .forgotpasspage, .myprofilepage{
+    width: 300px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.edititempage{
+     width: 300px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+.registerpage{
+    width: 300px;
+    height: 600px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.indexpage{
+    width: 300px;
+    height: 720px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.viewitempage, .searchpage{
+    width: 400px;
+    height: 500px;
+    background: transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+
+.loginpage h1, .forgotpasspage h1, .registerpage h1, .myprofilepage h1, .edititempage h1, .indexpage h1, .viewitempage h1, .searchpage h1{
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.indexpage h2, .viewitempage h2, .searchpage h2{
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 7px;
+    margin-top: 20px;
+}
+
+.registerpage h2{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 185px;
+    margin-bottom: 20px;
+}
+
+.usernamepassword, .forgotinfo, .registerinfo, .registerlist, .indexlist, .viewitemtext {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.indexotherlist, .additeminfo{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.usernamepassword input, .forgotinfo input {
+    width: 97%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.2em;
+    margin-bottom: 6px;
+}
+
+.registerlist input, .registerinfo input, .registerlist textarea, .myprofilepage input, .myprofilepage textarea, .edititempage input, .edititempage textarea, .indexpage input, .indexpage textarea, .viewitempage p {
+    width: 97%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.2em;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.indexlist, .indexotherlist, .additeminfo{
+    margin-top: 20px;
+    margin-bottom: 150px;
+}
+
+.usernamepassword input::placeholder, .forgotinfo input::placeholder, .registerinfo input::placeholder, .registerlist input::placeholder , .registerlist textarea::placeholder, .myprofilepage input::placeholder , .myprofile textarea::placeholder, .edititempage input::placeholder, .edititempage textarea::placeholder, .indexpage input::placeholder, .indexpage textarea::placeholder{
+    color: #fff;
+}
+
+.edititemset{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.usernamepassword i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.checkboxlogin{
+     display: flex;
+     justify-content: space-between;
+     font-size: 14.5px;
+     
+}
+
+.registercheckbox{
+    display: inline-block;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 6px;
+  
+}
+.checkboxlogin input{
+    accent-color: #fff;
+    margin-right: 100px;
+}
+
+.checkboxlogin label{
+    top: 50px;
+}
+ 
+.checkboxlogin a, .indexlist ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.checkboxlogin a:hover, .indexlist ul li a:hover{
+    text-decoration: underline;
+}
+
+.loginpage button, .forgotpasspage button, .registerpage button, .myprofilepage button, .edititempage button, .indexpage button{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.loginlinks{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.loginlinks p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loginlinks p a:hover{
+    text-decoration: underline;
+}
+
+.forgotpasspage p{
+    font-size: 17px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.forgot a, .register a,.loginhead a,.myprofile a{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+   
+}
+
+.forgot a::after, .register a::after, .loginhead a::after, .myprofile a::after{
+   content: '';
+   height: 3px;
+   width: 0%;
+   background: red;
+   position: absolute;
+   left: 0;
+   bottom:-10px;
+   transition: 0.5s;
+}
+
+.forgot a:hover:after, .register a:hover:after,.loginhead a:hover:after,.myprofile a:hover:after{
+    width: 100%;
+}
+
+.edititem ul, .indexhead ul, .viewitem ul{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    list-style: none;
+}
+
+.edititem ul li, .indexhead ul li, .viewitem ul li{
+    margin: 1em;
+    flex-grow: 1;
+    display: inline-block;
+    position: relative;
+}
+
+.edititem ul li a, .indexhead ul li a, .viewitem ul li a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.edititem ul li::after, .indexhead ul li::after, .viewitem ul li::after{
+   content: '';
+   height: 3px;
+   width: 0%;
+   background: red;
+   position: absolute;
+   left: 0;
+   bottom:-10px;
+   transition: 0.5s;
+}
+
+.edititem ul li:hover:after, .indexhead ul li:hover:after, .viewitem ul li:hover:after{
+    width: 100%;
+} 
+
+/*---------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+----------------------------------------------------------------*/
 :root {
     /* Base font stack and font size */
     font-family: "Poppins", sans-serif;
@@ -8,13 +346,13 @@
     /* Base colors for things outside the <main> */
     background-color: rgba(215, 214, 214, 0.952);
     color: rgb(33, 30, 30);
-    background-image: url(img/mountain.jpg);
+    background-image: url(../img/new.jpg);
     background-repeat: no-repeat;
     background-size:cover;
     min-height: 100vh;
   }
     body{
-    background-image: url(img/mountain.jpg);
+    background-image: url(../img/new.jpg);
     background-repeat: no-repeat;
     background-size:cover;
     min-height: 100vh;
@@ -40,7 +378,7 @@
     font-size: 19px;
     font-weight: 300;
     color: rgb(61, 60, 60);
-    background-image: url(img/line_bg2.jpg);
+    background-image: url(../img/line_bg2.jpg);
     padding-left: 5em;
     padding-top: 1em;
     margin-right: auto;
@@ -85,7 +423,7 @@
     padding-top:0.5em;
     padding-bottom:0.3em;
     background-color: rgb(160, 159, 155);
-    background-image: url(img/line_bg2.jpg);
+    background-image: url(..//img/line_bg2.jpg);
 
   }
   .add_item_form >*{
@@ -176,7 +514,7 @@
     margin-top: 3em;
     flex-direction: column;
     align-items: center;
-    background-image: url(img/line_bg2.jpg);
+    background-image: url(..//img/line_bg2.jpg);
     border-radius: 35px;
 }
 .paper_container *{
@@ -189,208 +527,3 @@
     background-color: #ffffff3e;
     
 }
-
-
-
-  .login, .forgot, .register, .myprofile{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-image: url(img/mountain.jpg) no-repeat;
-    font-family: "Poppins", sans-serif;
-    background-size: cover;
-    background-position: center;
-}
-
-
-.loginpage, .forgotpasspage, .myprofilepage{
-    width: 300px;
-    background: transparent;
-    border:2px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-
-.registerpage{
-    width: 300px;
-    height: 600px;
-    background: transparent;
-    border:2px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);;
-    color: #fff;
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-
-
-.loginpage h1, .forgotpasspage h1, .registerpage h1, .myprofilepage h1{
-    font-size: 40px;
-    text-align: center;
-}
-
-.registerpage h2{
-    font-size: 40px;
-    text-align: center;
-    margin-top: 185px;
-    margin-bottom: 20px;
-}
-
-.usernamepassword, .forgotinfo, .registerinfo, .registerlist {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-}
-
-
-.usernamepassword input, .forgotinfo input {
-    width: 97%;
-    height: 90%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 0.2em;
-    margin-bottom: 6px;
-}
-.reg_input{
-    width: 95%;
-    height: 0.8rem;
-    border:none;
-    border-radius: 30px;
-    background-color: #ffffff7f;
-}
-
-.registerlist input, .registerinfo input, .registerlist textarea, .myprofilepage input, .myprofilepage textarea {
-    width: 97%;
-    height: 90%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 0.2em;
-    margin-top: 6px;
-    margin-bottom: 6px;
-}
-
-
-.usernamepassword input::placeholder, .forgotinfo input::placeholder, .registerinfo input::placeholder, .registerlist input::placeholder , .registerlist textarea::placeholder, .myprofilepage input::placeholder , .myprofile textarea::placeholder{
-    color: #fff;
-}
-
-.usernamepassword i{
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-}
-
-.checkboxlogin{
-     display: flex;
-     justify-content: space-between;
-     font-size: 14.5px;
-     margin: -15px 0 15px;
-}
-
-.registercheckbox{
-    display: inline-block;
-    justify-content: center;
-    padding: 10px;
-    text-align: center;
-    margin-left: 60px;
-    margin-bottom: 6px;
-  
-}
-.checkboxlogin input{
-    accent-color: #fff;
-    margin-right: 3px;
-}
- 
-.checkboxlogin a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.checkboxlogin a:hover{
-    text-decoration: underline;
-}
-
-.loginpage button, .forgotpasspage button, .registerpage button, .myprofilepage button{
-    width: 100%;
-    height: 40px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-    margin-top: 5px;
-}
-
-.loginlinks{
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-
-.loginlinks p a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.loginlinks p a:hover{
-    text-decoration: underline;
-}
-
-.forgotpasspage p{
-    font-size: 17px;
-    text-align: center;
-    margin: 20px 0 15px;
-}
-
-.forgot a, .register a,.loginhead a,.myprofile a{
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 18px;
-   
-}
-
-.forgot a::after, .register a::after, .loginhead a::after, .myprofile a::after{
-   content: '';
-   height: 3px;
-   width: 0%;
-   background: red;
-   position: absolute;
-   left: 0;
-   bottom:-10px;
-   transition: 0.5s;
-}
-
-.forgot a:hover:after, .register a:hover:after,.loginhead a:hover:after,.myprofile a:hover:after{
-    width: 100%;
-}
-
-
-
-
-  
