@@ -1,0 +1,269 @@
+@import 'reset.css';
+
+
+/*******************************************************************************
+** This file is a good example to use for writing your own CSS, both in terms of
+** how you should organize, group, and order your style rules, and how you
+** should re-use properties between them.
+**
+** Only thing is the comments: they are a bit more verbose than *you* would be
+** expected to write in your own CSS files for this course or in the real world.
+** That's because the comments in this file are more explanatory than normal, so
+** you can study it.
+**
+** Also, the *layout* styles (which was lab 5) are still separate from the
+** presentational styles (lab 4), since this file is the answer key for both
+** labs. In the real world, you'd target your elements once, and add both sets
+** of styles, instead of splitting it halfway down the file.
+*******************************************************************************/
+
+
+/****************************************
+** Page Section Containers
+*****************************************/
+
+/* The root of the document (for webpages, the <html> element) */
+:root {
+  /* Base font stack and font size */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+
+  /* Base colors for things outside the <main> */
+  background-color: mediumorchid;
+  color: white;
+}
+
+header {
+  /* Gradient from pink to (background) purple behind the header image */
+  background: linear-gradient(to bottom, deeppink, transparent);
+}
+
+main {
+  background-color: white;
+  color: black;
+}
+
+
+/****************************************
+** Header Styles
+*****************************************/
+
+h1 {
+  color: #612ca8;
+  font-weight: 600; /* semibold */
+  font-size: 2rem;
+}
+
+
+/****************************************
+** Nav & Button Styles
+*****************************************/
+
+/* Default state for buttons and nav links styled to look like buttons,
+ * including ':visited' to override the default */
+nav a,
+nav a:visited,
+button {
+  color: white;
+  text-decoration: none; /* remove default underline */
+  background-color: deeppink;
+  cursor: pointer;
+}
+
+/* Hover state for buttons and nav links */
+nav a:hover,
+nav a:visited:hover,
+button:hover {
+  color: deeppink;
+  background-color: white;
+}
+
+/* "Mid-click" state for buttons and nav links */
+nav a:active,
+nav a:visited:active,
+button:active {
+  color: deeppink;
+  background-color: #f1f1f1; /* slightly darker white to indicate click */
+}
+
+
+/****************************************
+** Form Styles
+*****************************************/
+
+fieldset {
+  border: 0.15em solid deeppink;
+}
+
+/* Fieldset's label */
+legend {
+  background-color: deeppink;
+  color: white;
+  font-style: italic;
+}
+
+/* Dropdown list's label */
+label[for="choice"] {
+  font-weight: 600; /* slightly bolder */
+  font-size: 1.2em; /* slightly larger */
+  color: #612ca8;
+}
+
+/* Dropdown list */
+#choice {
+  font-size: 1.2em;
+}
+
+
+/****************************************
+** Other General Page Styles
+*****************************************/
+
+a,
+a:visited {
+  color: #612ca8;
+}
+
+
+/****************************************************************************
+*****************************************************************************
+** PUT YOUR WORK FOR LAB 5 AFTER THIS COMMENT
+*****************************************************************************
+*****************************************************************************/
+
+/****************************************
+** Page layout & general styles
+*****************************************/
+
+body {
+  /* Body is a flexbox to allow children to take advantage of how auto margins
+   * work along the main-axis of a flexbox */
+  display: flex;
+  flex-direction: column;
+  /* We make the main-axis full-height, so an auto-margin can use up the whole
+   * page if it needs to */
+  min-height: 100vh;
+}
+
+header img {
+  display: block;
+  margin: 0 auto; /* center horizontally */
+}
+
+footer {
+  margin-top: auto; /* push to bottom of page */
+  margin-bottom: 0.25em; /* but not *right* up to the bottom */
+  text-align: center;
+}
+
+nav,
+main {
+  margin: 1em auto; /* center horizontally; keep a bit of space between */
+  max-width: 55rem;
+}
+
+nav a,
+button {
+  /* display: block ensures that our anchors fill their list items properly */
+  display: block;
+  /* padding, border, and border-radius give us the blocky look */
+  padding: 0.5em 1.4em;
+  border-radius: 0.35em;
+  border: 0.15em solid deeppink;
+  text-align: center;
+
+  box-shadow: 0.05em 0.15em 0.25em rgba(0, 0, 0, 25%);
+}
+
+/****************************************
+** Nav layout
+*****************************************/
+
+nav ul {
+   /* remove bullet-point-related styles */
+  list-style: none;
+
+  /* our list is a flexbox. the wrap will only come into effect if the screen is
+   * too narrow to fit everything on one line, so you may not ever see it. */
+  display: flex;
+  flex-flow: row wrap;
+  /* we don't need to worry about `justify-content: center` or anything, because
+   * we have told our list items to grow to fill up any of the extra space
+   * they'd have been centered inside of. */
+}
+
+nav li {
+  display: block;
+  flex: 1 0 8em; /* "start at 8em, grow evenly if you can, but don't shrink" */
+  margin: 0.4em 0.8em;
+}
+
+/****************************************
+** Main & form layout
+*****************************************/
+
+main {
+  /* breathing room around main's *contents*; on the inside of main */
+  padding: 2.2em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.45em 0.75em rgba(0, 0, 0, 25%);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0.75em;
+}
+
+form>* {
+  margin-top: 1em;
+}
+
+button.centered {
+  /* a "centered" button is one that is in the middle; it needs auto margins */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.centered {
+  /* but a div is full width; we assume "centered" means that its inline
+   * children need to be centered */
+  text-align: center;
+}
+
+fieldset {
+  border-radius: 0.5em;
+}
+
+fieldset legend {
+  margin: 0 1em; /* no extra top/bottom margins */
+  padding: 0.35em 0.50em;
+  border-radius: 0.35em;
+}
+
+fieldset div {
+  margin: 1em;
+}
+
+
+/****************************************************************************
+*****************************************************************************
+** Extra styles from after lab 5
+*****************************************************************************
+*****************************************************************************/
+
+.error {
+  display: inline-block;
+  color: rgb(3, 130, 3);
+  font-style: italic;
+  margin: 1em;
+}
+
+div>.error {
+  /* If an error is inside a div (like, next to an input), then we don't need
+   * any extra top/bottom margins */
+  margin: 0 1em;
+}
+
+.hidden {
+  display: none;
+}
