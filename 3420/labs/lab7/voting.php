@@ -1,6 +1,6 @@
 <?php
 
-// Declare empty array to add errors too
+// Declare empty array to add errors to
 $errors = array();
 
 // Get inputs from $_POST, or set them to sensible defaults if they don't exist.
@@ -17,6 +17,9 @@ $agree        = $_POST['agree'] ?? 'N';
 // Include library, make database connection, and query for dropdown list
 // information here:
 // *****************************************************************************
+require './includes/library.php';
+$pdo = connectDB();
+$stmt = $pdo->query("SELECT id, name FROM 3420_candies ORDER BY name ASC");
 
 // ...
 
@@ -35,6 +38,34 @@ if (isset($_POST['submit'])) {
   if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
     $errors['email'] = true;
   }
+
+
+try {
+    // Preparing the SQL statement. The colon (:) before email is a placeholder.
+    $storedEmails = $pdo->prepare("SELECT email FROM 3420_votes WHERE email = :email");
+
+    // Binding value to a placeholder
+    // This helps you to prevent SQL Injection attacks
+    $storedEmails->bindValue(':email', $email); 
+
+    // Executing the statement
+    $storedEmails->execute();
+
+    // fetching the emails
+    $results = $storedEmails->fetchAll();
+
+    if (count($results) > 0) { 
+        // if the count of results is greater than 0, it means email already exists in the database
+        $errors[] = "Email already exists in the database.";
+    }
+} 
+catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+ 
+
+  if ($storedEmails != null) {$errors['email'] = true;;}
 
   // Ensure that the user selected a valid radio button (matches the enum values
   // in the database)
@@ -65,10 +96,13 @@ if (isset($_POST['submit'])) {
     // *************************************************************************
 
     // Add the vote to `3420_votes`:
-    // ...
-
+    $insertQuery = "INSERT INTO 3420_votes (name, email, perspective, candy_choice, entry_date) VALUES (?, ?, ?, ?, NOW())";
+    $insertSuccess = $pdo->prepare($insertQuery)->execute([$name, $email, $perspective, $choice]);
+    
     // Increase the vote-count in `3420_candies`:
-    // ...
+    $updateQuery = "UPDATE 3420_candies SET vote_count = vote_count + 1 WHERE id = ?";
+    $updateSuccess = $pdo->prepare($updateQuery)->execute([$choice]);
+
 
     // Then redirect:
     header("Location: thankyou.php");
@@ -171,7 +205,12 @@ if (isset($_POST['submit'])) {
               Put a for/foreach loop for your dropdown options from the database
               statement here. Use the `<option>` below as a template.
             **************************************************************** -->
-            <option value="1" <?= $choice == 1 ? 'selected' : '' ?>>Piglets</option>
+            <?php foreach($stmt as $item): ?>
+              <option value="<?= $item['id'] ?>" <?= $choice == $item['id'] ? 'selected' : '' ?>>
+                <?= $item['name'] ?>
+              </option>
+            <?php endforeach; ?>
+         
 
           </select>
 
