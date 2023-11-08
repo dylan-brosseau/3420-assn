@@ -1,93 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
- 
-  </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="./css/assn.css" />
+    <title>User Registration</title>
+</head>
 
-  <body>
-    <nav>
-        <ul class="navigation">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="my_profile.html">My Profile</a></li>
-            <li><a href="list.html">My Public Lists</a></li>
-            <li><a href="search.html">Search</a></li> 
-            <li><a href="add_list.html">Create a New List</a></li>      
-     
-        </ul>
-    </nav>
 
-    <h1>Register</h1>
-
-<!--Collecting user account information-->
-    <div>
-        <h3>Account Information</h3>
-
-        <!--Registration form (additional attributed TDB)-->
-
-        <form name="register" id="register">
-        
-            <div>
-                <label>Create Username: </label>
-                <input type="text" name="username" id="username">
-            </div>
-                   
-            <div>
-                <label>Create password: </label>
-                <input type="password" id="create_password">
+<body class="register">
+    <main>
+        <a href="login.html">Back to Login Page</a>
+        <div class="registerpage">
+            <h1>User Registration</h1>
+                <!-- User Information -->
+            <div class="registerinfo">
+                <div>
+                  <!--<label for="username">Username:</label> -->
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                
+                <div>
+                   <!-- <label for="name">Full Name:</label> -->
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+                
+                <div>
+                    <!-- <label for="email">Email:</label> -->
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
             
-
+                <div>
+                   <!-- <label for="password">Password:</label> -->
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                
         
-                <label>Confirm Password: </label>
-                <input type="password" id="confirm_password">
+                <div>
+                   <!-- <label for="confirmPassword">Confirm Password:</label> -->
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                </div>
             </div>
-        <!--Collecting user personal information-->
-
-            <h3>Personal Infromation</h3>
-            <div>
-                <label>Full Name: </label>
-                <input type="text" name="fullname" id="fullname" placeholder="John Smith">
-            </div>         
-            <div>
-                <label>Email: </label>
-                <input type="email" name="email" id="email" placeholder="example@example.com">
-            </div>
-            <div>
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob">
-            </div>
-
-            <!--Collecting basic information about the users bucket list-->
-
-            <h3>Create Your List</h3>
-            <div>
-                <label>List Title: </label>
-                <input type="text" name="list_title" id="list_title" placeholder="My First List">
-            </div>
-            <div>
-                <label for="description">Write a description for your list: </label>
-                <textarea name="description" id="description" cols="60" rows="2"></textarea>
-
-            </div>
-
-            <div>
-                <label for="access">I'd like my list to be </label>
-                <select name="access" id="access">
-                    <option value="Private" selected>Private</option>
-                    <option value="Public">Public</option>
-                </select>
-            </div>
-
-            <!--Submit information -->
-
-            <button type="submit">Submit</button>
-        </form>
-
-
-                  
-    </div>
+           
     
 
-  </body>
+            <!-- List Information -->
+            <div class="registerlist">
+                <h2>List Information</h2>
+            
+                <div>
+                    <!-- <label for="listName">List Name:</label> -->
+                    <input type="text" id="listName" name="listName" placeholder="List Name">
+                </div>
+                
+                <div>
+                    <!-- <label for="listDescription">List Description:</label> -->
+                    <textarea id="listDescription" name="listDescription" rows="2" placeholder="Description" required></textarea>
+                </div>
+                
+                <div class="registercheckbox">
+                   <label><input type="checkbox" id="publicList" name="publicList">  Make List Public</lable>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit">Submit</button>
+            </div>
+    
+        </div>
+    </main>
+</body>
+</html>

@@ -3,107 +3,74 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="./css/assn.css" />
     <title>My Profile</title>
 </head>
 
-<body>
-    <nav>
-        <ul class="navigation">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="my_profile.html">My Profile</a></li>
-            <li><a href="list.html">My Public Lists</a></li>
-            <li><a href="search.html">Search</a></li>    
-            <li><a href="add_list.html">Create a New List</a></li>      
-  
-        </ul>
-    </nav>
-    <hr />
-    <div class="profile_information">
-         <!-- We have a user profile to provide more customization to the user and allow them to go into
+<body class="myprofile">
+    <main>
+        <a href="index.html">Back to Main Page</a>
+        <!-- We have a user profile to provide more customization to the user and allow them to go into
         more detail about themselves, none of these feild are required and the user can fill out what they
         like-->
-        <h1>My Profile</h1>
-        <ul>
-            <li>
-                <label for="username">Username:</label>
-                <span id="username">JohnDoe123</span>
-            </li>
-
-            <li>
-                <label for="fullname">Full Name:</label>
-                <span id="fullname">John Doe</span>
-            </li>
-
-            <li>
-                <label for="email">Email:</label>
-                <span id="email">johndoe@example.com</span>
-            </li>
-
-            <li>
-                <label for="email">Age:</label>
-                <span id="email">20</span>
-            </li>
-
-            <li>
-                <label for="email">Location:</label>
-                <span id="email">Peterborough</span>
-            </li>
-        </ul>
-            
-        <div>
-            <label for="email">Bio:</label>
-            <span id="email">I am interested in....</span>
-        </div>
-        <div>
-            <h4>Socials</h4>
-            <ul class="socials">
-                <li>@john.doe</li>
-                <li>@doejohn</li>
-            </ul>
-        </div>
-    </div>
-       
-    <h2> Edit Profile</h2>
-       
-    <form class="profile_information">
-         
-        <!-- Asking for address-->
-        <div>
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" placeholder="Enter your location">
-        </div>
-        <!-- A bio so they can add some detials about themselves-->
-        <div>
-            <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" placeholder="Write a brief bio about yourself"></textarea>
-        </div>
-        <!-- An interests tag-->
-        <div>
-            <label for="interests">Interests:</label>
-            <input type="text" id="interests" name="interests" placeholder="Enter your interests">
-        </div>
-        <!-- A place to link their social media-->
-        <div>
-            <label for="social-media">Social Media:</label>
-            <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook URL">
-            <input type="url" id="twitter" name="twitter" placeholder="Enter your Twitter URL">
-            <input type="url" id="instagram" name="instagram" placeholder="Enter your Instagram URL">
-        </div>
-        <!-- Add their education-->
-        <div>
-            <label for="education">Education:</label>
-            <input type="text" id="education" name="education" placeholder="Enter your education">
-        </div>
-        <!-- Current job tag-->
-        <div>
-            <label for="occupation">Occupation:</label>
-            <input type="text" id="occupation" name="occupation" placeholder="Enter your occupation">
-        </div>
-        <button type="submit">Save Profile</button>
+        <div class="myprofilepage">
+            <h1>My Profile</h1>
         
-    </form>
-       
+            <!-- This username area will already be filled out because we ask for username in register-->
+            <div>
+            <!-- <label for="username">Username:</label>-->
+                <input type="text" id="username" name="username" placeholder="JohnDoe123" required readonly>
+            </div>
+            <!-- This fullname area will already be filled out because we ask for username in register-->
+            <div>
+            <!-- <label for="full-name">Full Name:</label> -->
+                <input type="text" id="full-name" name="full-name" placeholder="John Doe" required readonly>
+            </div>
+            <!-- This email area will already be filled out because we ask for username in register-->
+            <div>
+            <!-- <label for="email">Email:</label> -->
+                <input type="email" id="email" name="email" placeholder="john@example.com" required readonly>
+            </div>
+            <!-- Asking for date of birth-->
+            <div>
+            <!-- <label for="dob">Date of Birth:</label> -->
+                <input type="date" id="dob" name="dob">
+            </div>
+            <!-- Asking for address-->
+            <div>
+            <!-- <label for="location">Location:</label> -->
+                <input type="text" id="location" name="location" placeholder="Enter your location">
+            </div>
+            <!-- A bio so they can add some detials about themselves-->
+            <div>
+            <!-- <label for="bio">Bio:</label> -->
+                <textarea id="bio" name="bio" placeholder="Write a brief bio about yourself"></textarea>
+            </div>
+            <!-- An interests tag-->
+            <div>
+            <!-- <label for="interests">Interests:</label> -->
+                <input type="text" id="interests" name="interests" placeholder="Enter your interests">
+            </div>
+            <!-- A place to link their social media-->
+            <div>
+            <!-- <label for="social-media">Social Media:</label> -->
+                <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook URL">
+                <input type="url" id="twitter" name="twitter" placeholder="Enter your Twitter URL">
+                <input type="url" id="instagram" name="instagram" placeholder="Enter your Instagram URL"> 
+            </div>
+            <!-- Add their education-->
+            <div>
+            <!-- <label for="education">Education:</label> -->
+                <input type="text" id="education" name="education" placeholder="Enter your education">
+            </div>
+            <!-- Current job tag-->
+            <div>
+            <!-- <label for="occupation">Occupation:</label> -->
+                <input type="text" id="occupation" name="occupation" placeholder="Enter your occupation">
+            </div>
+            <button type="submit">Save Profile</button>
+        </div>
     
+    </main>
 </body>
 </html>

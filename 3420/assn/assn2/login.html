@@ -3,48 +3,63 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/assn.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>User Login</title>
 </head>
 
-<body>
-    <h1>User Login</h1>
-    <form method="POST">
-        <!-- Username -->
-        <div>
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
-        </div>
-       
-        <!-- Password -->
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-        </div>
-        
-
-        <!-- Remember Me -->
-        <div>
-          <label for="rememberMe">Remember Me:</label>
-          <input type="checkbox" id="rememberMe" name="rememberMe">
-        </div>
-        
-        <!-- Forgot Password Link -->
-        <div>
-          <a href="forgot_password.html">Forgot Password?</a>
-        </div>
-
-        <!-- Register Link-->
-        <div>
-            <a href="register.html">Sign Up Here</a>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit">Submit</button>
-
-        <!-- This is used when eventaully the user signs in they can go to the next page-->
-        <!-- Since we dont have the means to do that yet just provided a link to our main page-->
-        <p>Successfully logged in! Click below to access your main page:</p>
+<body class="login">
+    <main>
+      <div class="loginhead">
         <a href="index.html">Go to Main Page</a>
-    </form>
+      </div>
+      <form method="POST">
+        <div class="loginpage">
+          <h1>Login</h1>
+          <!-- Username -->
+          <div class="usernamepassword">
+            <!-- <label for="username">Username:</label> -->
+            <input type="text" id="username" name="username" placeholder="Username">
+            <i class='bx bxs-user'></i>
+          </div>
+        
+          <!-- Password -->
+          <div class="usernamepassword">
+           <!-- <label for="password">Password:</label> -->
+            <input type="password" id="password" name="password" placeholder="Password">
+            <i class='bx bxs-lock-alt'></i>
+          </div>
+          
+
+          <!-- Remember Me -->
+          <div class="checkboxlogin">
+            <label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember Me</label>
+            <a href="forgot_password.html">Forgot Password?</a>
+          </div>
+          
+          <div>
+            <button type="submit">Submit</button>
+          </div>
+          
+          <!-- Forgot Password Link -->
+          <!-- Register Link-->
+          <div class= 'loginlinks'>
+           <p> Don"t have an account?<a href="register.html"> Register</a></p>
+          </div>
+
+          <!-- Submit Button -->
+
+          <!-- This is used when eventaully the user signs in they can go to the next page-->
+          <!-- Since we dont have the means to do that yet just provided a link to our main page-->
+         
+          <!--<p>Successfully logged in! Click below to access your main page:</p>
+          <a href="index.html">Go to Main Page</a> -->
+    
+        </div>
+      </form>
+  </main>
+  <!--<footer>
+    &copy; Lucas Dacruz, Dylan Brosseau-2023
+  </footer> -->
 </body>
 </html>
