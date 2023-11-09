@@ -1,0 +1,590 @@
+
+@import url('./reset.css');
+
+.hidden {
+  display: none;
+}
+
+ /* Base styles for multiple page sections */
+.login, .forgot, .register, .myprofile, .edititem, .index, .viewitem, .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../img/mountain.jpg) no-repeat;
+    font-family: "Poppins", sans-serif;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Styles for login, forgot password, and my profile pages */
+.loginpage, .forgotpasspage, .myprofilepage {
+    width: 300px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Styles for the edit item page */
+.edititempage {
+    width: 300px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Styles for the registration page */
+.registerpage {
+    width: 300px;
+    height: 600px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Styles for the index page */
+.indexpage {
+    width: 300px;
+    height: 720px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Styles for the view item and search pages */
+.viewitempage, .searchpage {
+    width: 400px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+/* Styling for page titles */
+.loginpage h1, .forgotpasspage h1, .registerpage h1, .myprofilepage h1, .edititempage h1, .indexpage h1, .viewitempage h1, .searchpage h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Styling for secondary page titles */
+.indexpage h2, .viewitempage h2, .searchpage h2 {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 7px;
+    margin-top: 20px;
+}
+
+/* Styling for the 'register' page's title */
+.registerpage h2 {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 185px;
+    margin-bottom: 20px;
+}
+
+/* Common styles for input containers in various sections */
+.usernamepassword, .forgotinfo, .registerinfo, .registerlist, .indexlist, .viewitemtext {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+/* Styling for secondary input containers */
+.indexotherlist, .additeminfo {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styles for input fields within the login and forgot password sections */
+.usernamepassword input, .forgotinfo input {
+    width: 97%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.2em;
+    margin-bottom: 6px;
+}
+
+/* Styles for input fields in registration, my profile, edit item, and index sections */
+.registerlist input, .registerinfo input, .registerlist textarea, .myprofilepage input, .myprofilepage textarea, .edititempage input, .edititempage textarea, .indexpage input, .indexpage textarea, .viewitempage p {
+    width: 97%;
+    height: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0.2em;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/* Margin adjustments for certain sections */
+.indexlist, .indexotherlist, .additeminfo {
+    margin-top: 20px;
+    margin-bottom: 150px;
+}
+
+/* Styling for input placeholders in various sections */
+.usernamepassword input::placeholder, .forgotinfo input::placeholder, .registerinfo input::placeholder, .registerlist input::placeholder, .registerlist textarea::placeholder, .myprofilepage input::placeholder, .myprofile textarea::placeholder, .edititempage input::placeholder, .edititempage textarea::placeholder, .indexpage input::placeholder, .indexpage textarea::placeholder {
+    color: #fff;
+}
+
+/* Margin adjustments for certain sections */
+.edititemset {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styling for icons within input fields */
+.usernamepassword i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+
+/* Styling for checkboxes and associated elements */
+.checkboxlogin {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+}
+
+/* Styling for elements in the registration checkbox */
+.registercheckbox {
+    display: inline-block;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    margin-left: 60px;
+    margin-bottom: 6px;
+}
+
+/* Styling for checkbox input elements */
+.checkboxlogin input {
+    accent-color: #fff;
+    margin-right: 100px;
+}
+
+/* Styling for checkbox labels */
+.checkboxlogin label {
+    top: 50px;
+}
+
+/* Styling for links within the checkboxes and index list */
+.checkboxlogin a, .indexlist ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hover effect for links within the checkboxes and index list */
+.checkboxlogin a:hover, .indexlist ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for buttons in various page sections */
+.loginpage button, .forgotpasspage button, .registerpage button, .myprofilepage button, .edititempage button, .indexpage button {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Styling for login links */
+.loginlinks {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+/* Styling for links within login links */
+.loginlinks p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Hover effect for links within login links */
+.loginlinks p a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the "forgot password" paragraph */
+.forgotpasspage p {
+    font-size: 17px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+/* Styling for the "forgot," "register," "login," and "my profile" links */
+.forgot a, .register a, .loginhead a, .myprofile a {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+/* Styling for the animated underline effect on links */
+.forgot a::after, .register a::after, .loginhead a::after, .myprofile a::after {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: red;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+/* Hover effect for links with animated underlines */
+.forgot a:hover:after, .register a:hover:after, .loginhead a:hover:after, .myprofile a:hover:after {
+    width: 100%;
+}
+
+/* Styling for unordered lists within edit item, index head, and view item sections */
+.edititem ul, .indexhead ul, .viewitem ul {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    list-style: none;
+}
+
+/* Styling for list items within unordered lists */
+.edititem ul li, .indexhead ul li, .viewitem ul li, .index_sidebar ul li {
+    margin: 1em;
+    flex-grow: 1;
+    display: inline-block;
+    position: relative;
+}
+
+/* Styling for links within list items */
+.edititem ul li a, .indexhead ul li a, .viewitem ul li a, .index_sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Styling for animated underlines on links within list items */
+.edititem ul li::after, .indexhead ul li::after, .viewitem ul li::after, .index_sidebar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: red;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+/* Hover effect for links with animated underlines within list items */
+.edititem ul li:hover:after, .indexhead ul li:hover:after, .viewitem ul li:hover:after, .index_sidebar ul li:hover:after {
+    width: 100%;
+}
+
+
+/*---------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+----------------------------------------------------------------*/
+
+
+:root {
+    /* Base font stack and font size */
+    font-family: "Poppins", sans-serif;
+    font-size: 19px;
+    background-color: rgba(215, 214, 214, 0.952);
+    color: rgb(33, 30, 30);
+    background-image: url(../img/new.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 100vh;
+  }
+
+/*background style for every page*/
+    body{
+    background-image: url(../img/new.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 100vh;
+    
+  }
+
+  /*specific header styles*/
+  .page_list_title{font-size: 36px; font-weight: bold; text-align:left; padding: 1em; }
+  .index_page h2{font-size: 30px; font-weight: bold; padding:0.3em; }
+  /*h3{font-size: 26px; font-weight: bold;}*/
+  #list_item_page_title{font-size: 30px;font-weight: bold; text-align: left;}
+  #list_page_header{font-size: 30px;font-weight: bold; text-align: center; color: #fff; padding: 2rem;}
+  
+ /*parent grid for other containers*/
+  .parent{
+    display:flex;
+    align-items: center;
+    padding: 1em;
+    border:2px solid;
+    justify-content: space-between;
+    
+  }
+
+  /*------index page specifics*/
+  /*Grid parent for index page - will hold flex container items*/
+  .index_parent{
+    margin-top: 1rem;
+    display:grid;
+    gap:20px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto;
+    
+    
+    
+  }
+  /*first grid item*/
+  .index_sidebar{
+    grid-column: 1 / 2; 
+    grid-row: 1/ 3;
+    display:flex;
+    flex-direction: column;
+
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border: 3px solid white;
+    border-radius: 15px;
+    width: 20vw;
+   
+    margin:1rem;
+    
+  }
+
+  /* Styling h2 for sidebar*/
+  .index_sidebar h2 {
+     color:#fff;
+    margin-top: 1rem;
+     
+     /*background-color: #ffffff;*/
+  }
+    /* Styling list for sidebar*/
+
+  .index_sidebar ul{
+    color:#fff;
+
+    margin: 1rem;
+    list-style-type: disc;
+     border: 2px solid white;
+     border-radius: 20px;
+     /*background-color: #ffffff;*/
+
+    }
+      /* Styling list items for sidebar*/
+  
+
+      /* Container for items on index*/
+  .index_container{
+    display: flex;
+    flex-direction: column;
+    
+    font-weight: 300;
+    font-size: 18px;
+    color: rgb(61, 60, 60);
+
+    background-image: url(../img/line_bg2.jpg);
+    
+    margin: auto;
+    margin-bottom: 1rem;
+    width: 60vw;
+    min-height: 40vh;
+    max-height: 50vh;
+    align-items: start;
+    justify-content: flex-start;
+    border: 0.2em solid rgb(255, 255, 255);
+    border-radius: 0.4em;  
+    overflow:auto;  
+  }
+
+  .index_container >*, .index_sidebar >*{
+    font-family: 'Indie Flower', cursive;
+    margin-left: 1rem;
+    padding-top: 1rem;
+    align-self: center;
+    padding: 1rem;
+
+  }
+ 
+
+
+  /* Add space below each paragraph */
+  .bucket_list li p {
+    margin-bottom: 30px; 
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+  .bucket_list li{
+    border: 1px solid;
+    border-radius: 20px;
+  }
+ .bucket_list li strong {font-weight: 700;}
+ .index_container strong{font-weight: 1000;}
+ 
+    /*----------*/
+
+      /* discover page containers*/
+
+  .container1, .container2{
+    color: #fff;
+    display:flex;
+    border: 0.2em solid rgb(234, 228, 228);
+    border-radius: 50px;
+    backdrop-filter: blur(20px);
+    min-width: 40vw;
+    min-height: 50vh;
+    padding: 0.5rem;
+    flex-direction: column;
+    margin: 1rem;
+  }
+.container1 *, .container2 *{
+    padding:1rem;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 35px;
+
+}
+.container1 a, .container2 a{ color:#fff}
+ 
+
+  .hw_input {
+    font-family: 'Indie Flower', cursive;
+    border-radius: 20px;
+  }
+    /*styles certain inputs/buttons*/
+
+   .add_item_form textarea, input, button{
+    width: 10em;
+  }
+
+ .container1 button, .container2 button{
+    position:relative;
+    top:30%;
+    border-radius: 35px;
+    font-family:"Poppins", sans-serif;
+    background-color: #edcaca75;
+  }
+  
+  /*Navigation bar style*/
+
+  nav{
+    display: flex;
+    width:96vw;
+    margin-left: 2em;
+    margin-right: 2em;
+    align-items: center;
+    height:5rem;
+    background: transparent;
+    backdrop-filter: blur(20px);
+  }
+
+/* Styles for links within list items */
+.edititem ul li a, .viewitem ul li a, .pageheader li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+/* Styles for underlines that appear on link hover within list items */
+.edititem ul li::after, .viewitem ul li::after, .pageheader li::after {
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: red;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+/* Styles for expanding underlines on link hover within list items */
+.edititem ul li:hover:after, .viewitem ul li:hover:after, .pageheader li:hover:after {
+    width: 100%;
+}
+.pageheader li {
+  margin-left: 4vw;
+  margin-right: 4vw;
+  flex-grow: 1;
+  display: inline-block;
+  position: relative;
+  
+}
+
+  /*style for all notepad background containers*/
+
+.paper_container{
+    display:flex;
+    width:60vw;
+    min-height: 80vh ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(../img/line_bg2.jpg);
+    border-radius: 35px;
+}
+.paper_container *{
+    font-family: 'Indie Flower', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    margin-left: 1.3em;
+    padding: 0.5em;
+    border-radius: 35px;
+    background-color: #ffffff3e;
+    
+}
