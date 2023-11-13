@@ -1,4 +1,33 @@
 <?php
+require './includes/library.php';
+
+$pdo = connectDB();
+$errors = array();
+
+
+$username         = $_POST['username'] ?? "";
+$password  = $_POST['password'] ?? null;
+$remember_me  = $_POST['remember_me'] ?? null;
+$password_is_good = false;
+
+if (isset($_POST['submit']))
+{
+    if(count($errors) === 0)
+    {
+        $stmt = $pdo->prepare("SELECT password FROM assn_accounts WHERE username = ? ");
+        $stmt->execute([$username]);
+        $hashed_password = $stmt->fetch();
+
+        if(password_verify($password, $hashed_password)){$password_is_good = true;}
+        echo $password_is_good;
+
+        
+    }
+}
+
+
+
+
 
 ?>
 
@@ -41,7 +70,7 @@
                 </div>
                 <!-- Submit Button -->
                 <div>
-                    <button type="submit">Submit</button> <!-- Button to submit the login form -->
+                    <button type="submit" name="submit">Submit</button> <!-- Button to submit the login form -->
                 </div>
             </div>
         </form>
