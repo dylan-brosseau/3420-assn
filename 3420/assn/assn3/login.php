@@ -8,7 +8,6 @@ $errors = array();
 $username         = $_POST['username'] ?? "";
 $password  = $_POST['password'] ?? null;
 $remember_me  = $_POST['remember_me'] ?? null;
-$password_is_good = false;
 
 if (isset($_POST['submit']))
 {
@@ -16,18 +15,18 @@ if (isset($_POST['submit']))
     {
         $stmt = $pdo->prepare("SELECT password FROM assn_accounts WHERE username = ? ");
         $stmt->execute([$username]);
-        $hashed_password = $stmt->fetch();
+        $user =  $stmt->fetch();
 
-        if(password_verify($password, $hashed_password)){$password_is_good = true;}
-        echo $password_is_good;
-
-        
+        if (!$user) {$errors['username'] = true;}
+        else if(!password_verify($password, $user['password'])){$errors['password'] = true; }
+        else{
+            session_start();
+            $_SESSION['username'] = $user['username'];
+            header("Location: index.php");
+            exit();
+        }      
     }
 }
-
-
-
-
 
 ?>
 
@@ -52,11 +51,13 @@ if (isset($_POST['submit']))
                 <!-- Username -->
                 <div class="usernamepassword"> <!-- Container for the username input -->
                     <input type="text" id="username" name="username" placeholder="Username"> <!-- Input field for the username -->
+                    <span class="error <?= !isset($errors['username']) ? 'hidden' : '' ?>">That user does not exist.</span>
                     <i class='bx bxs-user'></i> <!-- Icon for the username input -->
                 </div>
                 <!-- Password -->
                 <div class="usernamepassword"> <!-- Container for the password input -->
                     <input type="password" id="password" name="password" placeholder="Password"> <!-- Input field for the password -->
+                    <span class="error <?= !isset($errors['password']) ? 'hidden' : '' ?>">That password is incorrect.</span>
                     <i class='bx bxs-lock-alt'></i> <!-- Icon for the password input -->
                 </div>
                 <!-- Remember Me and Forgot Password Link -->
