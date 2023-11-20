@@ -1,11 +1,27 @@
 <?php
 require './includes/library.php';
 
+
+session_start();
+
+//if the login page is opened while the user is logged in, session is cleared and user is logged out
+if(isset($_SESSION['username'])){
+    // Unset all of the session variables.
+    $_SESSION = array();
+
+    // Destroy the session.
+    session_destroy();
+
+    header("Location: login.php"); 
+    exit();
+}
+
+
 $pdo = connectDB();
 $errors = array();
 
 
-$username         = $_POST['username'] ?? "";
+$username  = $_POST['username'] ?? "";
 $password  = $_POST['password'] ?? null;
 $remember_me  = $_POST['remember_me'] ?? null;
 
@@ -21,7 +37,7 @@ if (isset($_POST['submit']))
         else if(!password_verify($password, $user['password'])){$errors['password'] = true; }
         else{
             session_start();
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['username'] = $username;
             header("Location: index.php");
             exit();
         }      
@@ -43,7 +59,7 @@ if (isset($_POST['submit']))
 <body class="login"> <!-- Assigning a class to the body element for styling -->
     <main>
         <div class="loginhead">
-            <a href="index.html">Go to Main Page</a> <!-- Link to the main page -->
+            <a href="index.php">Go to Main Page</a> <!-- Link to the main page -->
         </div>
         <form method="POST"> <!-- Form for user login -->
             <div class="loginpage"> <!-- Stylish container for login form -->

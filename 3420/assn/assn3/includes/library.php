@@ -12,10 +12,10 @@ function connectDB()
 {
     // Load configuration as an array.
     $config = parse_ini_file(DOCROOT . "pwd/config.ini");
-    $dsn = "mysql:host=$config[domain];dbname=$config[dbname];charset=utf8mb4";
+    $dsn = "mysql:host=$config[domain];dbname=dylanbrosseau;charset=utf8mb4";
 
     try {
-        $pdo = new PDO($dsn, $config['username'], $config['password'], [
+        $pdo = new PDO($dsn, 'dylanbrosseau', 'Rydyl1969*', [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,

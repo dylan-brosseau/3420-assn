@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,26 +13,26 @@
         <nav>
             <ul class="pageheader">
                 <li>
-                    <a href="index.html">Main</a>
+                    <a href="index.php">Main</a>
                 </li>
                 <li>
-                    <a href="login.html">Login</a>
-                </li>
-    
-                <li>
-                    <a href="my_profile.html">My Profile</a>
+                    <a href="login.php"><?php echo $is_logged_in ? 'Logout' : 'Login'; ?></a>
                 </li>
     
                 <li>
-                    <a href="list.html">My Public Lists</a>
+                    <a href="my_profile.php">My Profile</a>
                 </li>
     
                 <li>
-                    <a href="search.html">Discover</a>   
+                    <a href="list.php">My Public Lists</a>
                 </li>
     
                 <li>
-                    <a href="add_list.html">New List</a>
+                    <a href="search.php">Discover</a>   
+                </li>
+    
+                <li>
+                    <a href="add_list.php">New List</a>
                 </li>
             </ul>    
         </nav>

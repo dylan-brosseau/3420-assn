@@ -1,9 +1,12 @@
-<?php 
+<?php
+session_start();
+require './includes/library.php';
+$pdo = connectDB();
+$is_logged_in = isset($_SESSION['username']) ? true : false;
+
+
 
 ?>
-
-
-
 
 
 <!DOCTYPE html>
