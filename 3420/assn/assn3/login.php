@@ -79,7 +79,7 @@ if (isset($_POST['submit']))
                 <!-- Remember Me and Forgot Password Link -->
                 <div class="checkboxlogin"> <!-- Container for the "Remember Me" and "Forgot Password" options -->
                     <label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember Me</label> <!-- Checkbox for "Remember Me" option -->
-                    <a href="forgot_password.html">Forgot Password?</a> <!-- Link to the Forgot Password page -->
+                    <a href="forgot_password.php">Forgot Password?</a> <!-- Link to the Forgot Password page -->
                 </div>
                 <!-- Register Link -->
                 <div class='loginlinks'> <!-- Container for the "Register" link -->
