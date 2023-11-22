@@ -89,8 +89,8 @@ if (isset($_POST['submit']))
             <h2>Me</h2> <!-- Heading for user's profile links -->
             <ul>
                 <li><?= $_SESSION['username'] ?> </li> <!-- Displaying the username -->
-                <li><a href="my_profile.html">Edit Profile</a></li> <!-- Link to edit user's profile -->
-                <li><a href="login.html">Sign out</a></li> <!-- Link to sign out from the account -->
+                <li><a href="my_profile.php">Edit Profile</a></li> <!-- Link to edit user's profile -->
+                <li><a href="login.php">Sign out</a></li> <!-- Link to sign out from the account -->
             </ul>
         </div>
 
@@ -115,7 +115,7 @@ if (isset($_POST['submit']))
                             echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
                             echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
                             echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
-                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="#">Delete</a></p>';
+                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="delete_item.php">Delete</a></p>';
                             echo "</li>";
                         }
                     }
