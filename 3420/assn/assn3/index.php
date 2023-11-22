@@ -115,7 +115,7 @@ if (isset($_POST['submit']))
                             echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
                             echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
                             echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
-                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="delete_item.php">Delete</a></p>';
+                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="#">Delete</a></p>';
                             echo "</li>";
                         }
                     }
