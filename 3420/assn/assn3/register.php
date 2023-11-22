@@ -61,7 +61,7 @@ if (isset($_POST['submit']))
           VALUES (?,?,?,?)
         ");
         $stmt->execute([$username, $list_title, $list_description, $is_public]);
-
+        
         header('Location: index.php');
         exit();
     }

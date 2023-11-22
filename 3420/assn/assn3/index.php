@@ -3,10 +3,53 @@ session_start();
 require './includes/library.php';
 $pdo = connectDB();
 $is_logged_in = isset($_SESSION['username']) ? true : false;
+if (!$is_logged_in){header("Location: login.php"); exit();}
 
+//get all list titles for the user
+$stmt = $pdo->prepare("SELECT title FROM assn_user_lists WHERE username = ? ");
+$stmt->execute([$_SESSION['username']]);
+$titles =  $stmt->fetchAll();
+
+//$selected_list;
+// setting the default selected list to the first list in the table
+if (isset($_POST['title_button'])) {
+    $selected_list = $_POST['title_button'];
+} 
+else {
+    // If no list was selected, default to the first list
+    $selected_list = $titles[0]['title'];
+}
+
+// get details from selected list
+$stmt2 = $pdo->prepare("SELECT title, description FROM assn_user_lists WHERE title = ? AND username = ?");
+$stmt2->execute([$selected_list, $_SESSION['username']]);
+$list_details = $stmt2->fetchAll();
+
+//get entries from selected list
+$stmt3= $pdo->prepare("SELECT * FROM assn_list_entries WHERE table_title = ? AND username = ?");
+$stmt3->execute([$selected_list, $_SESSION['username']]);
+$list_entries = $stmt3->fetchAll();
+
+//checking if the selected list has any entries
+$list_entries ? $has_entry = true : $has_entry = false;
+
+
+
+if (isset($_POST['submit']))
+{
+    $stmt4 = $pdo->prepare("INSERT INTO assn_list_entries
+     (id, table_title, username, entry_name, status, description) 
+     VALUES(?,?,?,?,?,?)");
+     $stmt4->execute([uniqid('', true), $selected_list, 
+     $_SESSION['username'], $_POST['title'], 'incomplete', $_POST['description']]);
+     header("Location: {$_SERVER['PHP_SELF']}");
+     exit();
+
+}
 
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -28,14 +71,24 @@ $is_logged_in = isset($_SESSION['username']) ? true : false;
         <div class="index_sidebar"> <!-- Sidebar for user lists and profile links -->
             <h2>My Lists</h2> <!-- Heading for user's lists -->
             <ul>
-                <li>Before I'm Married</li> <!-- List names -->
-                <li>Before I Die</li>
-                <li>List3</li>
+           <form method="post">
+                <ul>
+                     <?php foreach ($titles as $title) : ?>
+                            <li>
+                                <button type="submit" name="title_button" value="<?= $title['title'] ?>">
+                                <?= $title['title'] ?>
+                                </button>
+                             </li>
+                    <?php endforeach; ?>
+                </ul>
+            </form>
+
             </ul>
+          
             
             <h2>Me</h2> <!-- Heading for user's profile links -->
             <ul>
-                <li>[Username]</li> <!-- Displaying the username -->
+                <li><?= $_SESSION['username'] ?> </li> <!-- Displaying the username -->
                 <li><a href="my_profile.html">Edit Profile</a></li> <!-- Link to edit user's profile -->
                 <li><a href="login.html">Sign out</a></li> <!-- Link to sign out from the account -->
             </ul>
@@ -43,45 +96,36 @@ $is_logged_in = isset($_SESSION['username']) ? true : false;
 
         
         <div class="index_container"> <!-- Container for displaying list details -->   
-            <h1 class="page_list_title">Before I'm Married</h1> <!-- Heading for the list title -->
+            <h1 class="page_list_title"><?= $list_details[0]['title']?></h1> <!-- Heading for the list title -->
             <p><strong>List Description:</strong></p> <!-- Displaying a description of the list -->
-            <p>This list is all about the things I want to do before I'm married. It.....</p>
+            <p><?= $list_details[0]['description']?></p>
             <!-- Additional details about the list -->
             <br> <!-- Line break for separation -->
             
             <!-- List of Bucket List Items -->
             <ul class="bucket_list"> <!-- Unordered list for displaying list items -->
                 <!-- List Item 1 -->
-                <li>
-                    <p><strong>Entry:</strong> Visit Paris</p> <!-- Displaying list item title -->
-                    <p><strong>Description:</strong> I want to go to Paris because...</p> <!-- Displaying the description of the list item -->
-                    <p><strong>Status:</strong> Incomplete</p> <!-- Displaying the status of the list item -->
-                    <p>
-                        <a href="view_item.html">View Details</a> | <!-- Link to view the details of the list item -->
-                        <a href="edit_item.html">Edit</a> | <!-- Link to edit the list item -->
-                        <a href="#">Delete</a> <!-- Option to delete the list item -->
-                    </p>
-                </li>
-                
-                <hr /> <!-- Horizontal rule for separation -->
-                
-                <!-- List item 2 -->
-                <li>
-                    <p><strong>Entry:</strong> Climb Mount Everest</p> <!-- Displaying list item title -->
-                    <p><strong>Description:</strong> Conquer the world's highest peak.</p> <!-- Displaying the description of the list item -->
-                    <p><strong>Status:</strong> Completed</p> <!-- Displaying the status of the list item -->
-                    <p>
-                        <a href="view_item.html">View Details</a> | <!-- Link to view the details of the list item -->
-                        <a href="edit_item.html">Edit</a> | <!-- Link to edit the list item -->
-                        <a href="#">Delete</a> <!-- Option to delete the list item -->
-                    </p>
-                </li>
-                <!-- Here we can add more fake lists -->
+                <?php 
+                    if(!$list_entries){echo "This list has no entries yet."; }
+                    else
+                    {
+                        foreach($list_entries as $entry)
+                        {
+                            echo "<li>";
+                            echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
+                            echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
+                            echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
+                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="#">Delete</a></p>';
+                            echo "</li>";
+                        }
+                    }
+                ?>
+               
             </ul>         
         </div>
     
         <div class="index_add"> <!-- Container for adding a new list item -->
-            <form class="index_container" method="POST">
+            <form class="index_container" name="add_entry" method="POST">
                 <h2>Add New Entry</h2> <!-- Heading for adding a new list item -->
                 <div>
                     <label for="title">Title:</label> <!-- Label for the title input -->
@@ -92,7 +136,7 @@ $is_logged_in = isset($_SESSION['username']) ? true : false;
                     <legend>Description:</legend> <!-- Legend for the description field -->
                     <textarea class="hw_input" id="new_item_description" name="description" required></textarea> <!-- Textarea for the description -->
                 </fieldset>
-                <button type="submit" class="hw_input" id="submit_new_item">Submit</button> <!-- Button to submit the new list item -->
+                <button type="submit" class="hw_input" name="submit" id="submit_new_item">Submit</button> <!-- Button to submit the new list item -->
             </form>
         </div>
     </div>

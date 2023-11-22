@@ -1,3 +1,28 @@
+<?php
+session_start();
+require './includes/library.php';
+$pdo = connectDB();
+$is_logged_in = isset($_SESSION['username']) ? true : false;
+
+//redirect to login page if the user is not logged in
+if (!$is_logged_in){header("Location: login.php"); exit();}
+
+$title  = $_POST['title'] ?? "";
+$description  = $_POST['description'] ?? "";
+$access  = $_POST['access'] ?? null;
+
+if (isset($_POST['submit']))
+{
+    
+    $stmt = $pdo->prepare("INSERT INTO assn_user_lists
+     (username, title, description, is_public) VALUES (?,?,?,?)");
+    $stmt->execute([$_SESSION['username'], $title, $description, $access]);
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,47 +34,31 @@
 </head>
 
 <body>
-    <nav>
-        <ul class="pageheader">
-            <li>
-                <a href="login.html">Login</a> <!-- Navigation link to the "Login" page -->
-            </li>
-            <li>
-                <a href="my_profile.html">My Profile</a> <!-- Navigation link to the "My Profile" page -->
-            </li>
-            <li>
-                <a href="index.html">Main Page</a> <!-- Navigation link to the "Main Page" -->
-            </li>
-            <li>
-                <a href="search.html">Discover</a> <!-- Navigation link to the "Discover" page -->
-            </li>
-            <li>
-                <a href="list.html">Public Lists</a> <!-- Navigation link to the "Public Lists" page -->
-            </li>
-        </ul>   
-    </nav>
+
+    <?php include './includes/nav.php'?>
+
     
     <div class="paper_container">
         <h1 class="page_list_title">Create a New List</h1> <!-- Heading for the page -->
         
-        <form class="add_list" name="add_list" id="add_list">
+        <form class="add_list" name="add_list" id="add_list" method="post">
             <div>
                 <label>List Title: </label> <!-- Label for the list title input field -->
-                <input type="text" name="title" id="title"> <!-- Input field for the list title -->
+                <input type="text" name="title" id="title" required> <!-- Input field for the list title -->
             </div>
             <div>
                 <label>Description: </label> <!-- Label for the description input field -->
-                <input type="text" name="username" id="username"> <!-- Input field for the list description -->
+                <input type="text" name="description" id="description" required> <!-- Input field for the list description -->
             </div>
             <div>
                 <label for="access">I'd like my list to be </label> <!-- Label for the access type selection -->
                 <select name="access" id="access"> <!-- Dropdown for selecting list access type -->
-                    <option value="Private" selected>Private</option> <!-- Default option: Private -->
-                    <option value="Public">Public</option> <!-- Option: Public -->
+                    <option value=0 selected>Private</option> <!-- Default option: Private -->
+                    <option value=1>Public</option> <!-- Option: Public -->
                 </select>
             </div>
     
-            <button type="submit">Submit</button> <!-- Submit button for the form -->
+            <button type="submit" name="submit">Submit</button> <!-- Submit button for the form -->
         </form>
     </div>
 </body>
