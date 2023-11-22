@@ -77,7 +77,7 @@ if ($result) {
             
             <p>Are you sure you want to delete this list item?</p>
 
-            <form method="post" action="delete-item.php">
+            <form method="post" action="delete_item.php">
                 <!-- Hidden input to pass the item ID to the server -->
                 <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                 
