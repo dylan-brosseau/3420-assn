@@ -86,7 +86,7 @@ if (isset($_POST['submit']))
             <h1>User Registration</h1> <!-- Heading for the registration section -->
 
             <!-- User Information -->
-            <form name="register" method="post" action="">
+            <form name="register" method="post">
 
                 <div class="registerinfo">
                     <div>
@@ -152,8 +152,8 @@ if (isset($_POST['submit']))
                         id="list_description" 
                         name="list_description" 
                         rows="2" 
-                        placeholder="Description" 
-                        value="<?=$list_description?>">
+                        placeholder="Description">
+                        "<?=$list_description?>">
                         </textarea>
                         <!-- Text area for entering a list description (required) -->
                     </div>

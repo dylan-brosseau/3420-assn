@@ -106,7 +106,7 @@ if (isset($_POST['delete_account']))
 
 <body class="myprofile"> <!-- Assigning a class to the body element for styling -->
     <main>
-        <a href="index.html">Back to Main Page</a> <!-- Link to return to the main page -->
+        <a href="index.php">Back to Main Page</a> <!-- Link to return to the main page -->
         <div class="myprofilepage"> <!-- Stylish container for the user profile details -->
             <h1>Edit Profile</h1> <!-- Heading for the user profile section -->
             <form name="edit_profile" method="post">
