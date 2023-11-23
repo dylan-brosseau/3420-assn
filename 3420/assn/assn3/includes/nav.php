@@ -23,9 +23,6 @@
                     <a href="my_profile.php">My Profile</a>
                 </li>
     
-                <li>
-                    <a href="list.php">My Public Lists</a>
-                </li>
     
                 <li>
                     <a href="search.php">Discover</a>   

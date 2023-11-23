@@ -588,3 +588,10 @@
     background-color: #ffffff3e;
     
 }
+.strong{
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+  }

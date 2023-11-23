@@ -12,7 +12,7 @@ $password  = $_POST['password'] ?? null;
 $c_password  = $_POST['c_password'] ?? null;
 $list_title  = $_POST['list_title'] ?? null;
 $list_description  = $_POST['list_description'] ?? null;
-$is_public  = $_POST['is_public'] ?? null;
+$access  = $_POST['is_public'] ?? null;
 
 
 
@@ -57,11 +57,11 @@ if (isset($_POST['submit']))
         $stmt->execute([$username, $email, $name, $hashed_password]);
 
         $stmt = $pdo->prepare
-        ("INSERT INTO assn_user_lists (username, title, description, is_public)
+        ("INSERT INTO assn_user_lists (username, title, description, access)
           VALUES (?,?,?,?)
         ");
-        $stmt->execute([$username, $list_title, $list_description, $is_public]);
-        
+        $stmt->execute([$username, $list_title, $list_description, $access]);
+        $_SESSION['username'] = $username;
         header('Location: index.php');
         exit();
     }
@@ -163,8 +163,8 @@ if (isset($_POST['submit']))
                     type="checkbox" 
                     id="is_public" 
                     name="is_public"
-                    value=1
-                    <?= $is_public === 1 ? 'checked' : '' ?>
+                    value='public'
+                    <?= $access === 'public' ? 'checked' : '' ?>
                     >  
                     Make List Public</label>
                     <!-- Checkbox for making the list public -->

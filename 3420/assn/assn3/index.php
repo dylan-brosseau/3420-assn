@@ -12,16 +12,19 @@ $titles =  $stmt->fetchAll();
 
 //$selected_list;
 // setting the default selected list to the first list in the table
-if (isset($_POST['title_button'])) {
-    $selected_list = $_POST['title_button'];
-} 
-else {
-    // If no list was selected, default to the first list
-    $selected_list = $titles[0]['title'];
+if (!isset($_SESSION['selected_list'])){
+     // If no list was selected, default to the first list
+     $_SESSION['selected_list'] = $titles[0]['title'];
 }
 
+if (isset($_POST['title_button'])) {
+    $_SESSION['selected_list'] = $_POST['title_button'];
+} 
+
+
+$selected_list = $_SESSION['selected_list'];
 // get details from selected list
-$stmt2 = $pdo->prepare("SELECT title, description FROM assn_user_lists WHERE title = ? AND username = ?");
+$stmt2 = $pdo->prepare("SELECT title, description, access, id FROM assn_user_lists WHERE title = ? AND username = ?");
 $stmt2->execute([$selected_list, $_SESSION['username']]);
 $list_details = $stmt2->fetchAll();
 
@@ -30,20 +33,32 @@ $stmt3= $pdo->prepare("SELECT * FROM assn_list_entries WHERE table_title = ? AND
 $stmt3->execute([$selected_list, $_SESSION['username']]);
 $list_entries = $stmt3->fetchAll();
 
-//checking if the selected list has any entries
-$list_entries ? $has_entry = true : $has_entry = false;
-
-
+//variables for add item form
+$title  = $_POST['title'] ?? "";
+$description  = $_POST['description'] ?? "";
 
 if (isset($_POST['submit']))
 {
-    $stmt4 = $pdo->prepare("INSERT INTO assn_list_entries
-     (id, table_title, username, entry_name, status, description) 
-     VALUES(?,?,?,?,?,?)");
-     $stmt4->execute([uniqid('', true), $selected_list, 
-     $_SESSION['username'], $_POST['title'], 'incomplete', $_POST['description']]);
-     header("Location: {$_SERVER['PHP_SELF']}");
-     exit();
+    if (empty($title) || strlen($title) > 255) {
+        $errors['title'] = true;
+    } 
+    if (empty($description) || strlen($description) > 255) {
+        $errors['description'] = true;
+    }
+
+    if(empty($errors))
+    {
+        $stmt4 = $pdo->prepare("INSERT INTO assn_list_entries
+        (id, table_title, username, entry_name, status, description) 
+        VALUES(?,?,?,?,?,?)");
+        $stmt4->execute([uniqid('', true), $selected_list, 
+        $_SESSION['username'], $_POST['title'], 'incomplete', $_POST['description']]);
+
+        //redirection to self and get so the form is not submitted again on page refresh
+        header("Location: {$_SERVER['PHP_SELF']}");
+        exit();
+    }
+    
 
 }
 
@@ -97,8 +112,21 @@ if (isset($_POST['submit']))
         
         <div class="index_container"> <!-- Container for displaying list details -->   
             <h1 class="page_list_title"><?= $list_details[0]['title']?></h1> <!-- Heading for the list title -->
+            <p><strong>Public link:</strong></p> <!-- Displaying a description of the list -->
+
+               <?php 
+                if ($list_details[0]['access'] == 'public') {
+                    $url = 'https://loki.trentu.ca/~dylanbrosseau/3420/assn/assn3/list.php?id=' . $list_details[0]['id'];
+                    ?>
+                    <a href="<?=$url?>"><?=$url?></a>
+                    <?php
+                }
+?>
+
             <p><strong>List Description:</strong></p> <!-- Displaying a description of the list -->
             <p><?= $list_details[0]['description']?></p>
+          
+            
             <!-- Additional details about the list -->
             <br> <!-- Line break for separation -->
             
@@ -106,19 +134,20 @@ if (isset($_POST['submit']))
             <ul class="bucket_list"> <!-- Unordered list for displaying list items -->
                 <!-- List Item 1 -->
                 <?php 
-                    if(!$list_entries){echo "This list has no entries yet."; }
-                    else
-                    {
-                        foreach($list_entries as $entry)
-                        {
-                            echo "<li>";
-                            echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
-                            echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
-                            echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
-                            echo '<p><a href="view_item.php">View Details</a> | <a href="edit_item.php">Edit</a> | <a href="#">Delete</a></p>';
-                            echo "</li>";
-                        }
+
+                if(!$list_entries) {
+                    echo "This list has no entries yet."; 
+                } else {
+                    foreach($list_entries as $entry) {
+                        echo "<li>";
+                        echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
+                        echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
+                        echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
+                        echo "<p><a href='view_item.php?param={$entry['id']}'>View Details</a> | <a href='edit_item.php?param={$entry['id']}'>Edit</a> | <a href='delete_item.php?param={$entry['id']}'>Delete</a></p>";
+                        echo "</li>";
                     }
+                }
+
                 ?>
                
             </ul>         
@@ -134,7 +163,7 @@ if (isset($_POST['submit']))
                 
                 <fieldset>
                     <legend>Description:</legend> <!-- Legend for the description field -->
-                    <textarea class="hw_input" id="new_item_description" name="description" required></textarea> <!-- Textarea for the description -->
+                    <textarea class="hw_input" id="description" name="description" required></textarea> <!-- Textarea for the description -->
                 </fieldset>
                 <button type="submit" class="hw_input" name="submit" id="submit_new_item">Submit</button> <!-- Button to submit the new list item -->
             </form>

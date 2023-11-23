@@ -20,8 +20,12 @@ if(isset($_SESSION['username'])){
 $pdo = connectDB();
 $errors = array();
 
-
-$username  = $_POST['username'] ?? "";
+if(isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+    $username = $_COOKIE['username'];
+}
+else{
+    $username  = $_POST['username'] ?? "";
+}
 $password  = $_POST['password'] ?? null;
 $remember_me  = $_POST['remember_me'] ?? null;
 
@@ -36,6 +40,11 @@ if (isset($_POST['submit']))
         if (!$user) {$errors['username'] = true;}
         else if(!password_verify($password, $user['password'])){$errors['password'] = true; }
         else{
+            if ($remember_me) {
+                // Encrypt the password before saving in cookies
+                setcookie("username", $username, time() + (86400 * 30), "/"); // 86400 = 1 day
+                // The encrypted password should be saved here
+            }
             session_start();
             $_SESSION['username'] = $username;
             header("Location: index.php");
@@ -78,12 +87,12 @@ if (isset($_POST['submit']))
                 </div>
                 <!-- Remember Me and Forgot Password Link -->
                 <div class="checkboxlogin"> <!-- Container for the "Remember Me" and "Forgot Password" options -->
-                    <label><input type="checkbox" id="rememberMe" name="rememberMe"> Remember Me</label> <!-- Checkbox for "Remember Me" option -->
-                    <a href="forgot_password.html">Forgot Password?</a> <!-- Link to the Forgot Password page -->
+                    <label><label><input type="checkbox" id="remember_me" name="remember_me" <?php if($remember_me) echo "checked"; ?>> Remember Me</label> <!-- Checkbox for "Remember Me" option -->
                 </div>
+                <div><a href="forgot_password.php">Forgot Password?</a> <!-- Link to the Forgot Password page --></div>
                 <!-- Register Link -->
                 <div class='loginlinks'> <!-- Container for the "Register" link -->
-                    <p>Don't have an account?<a href="register.html"> Register</a></p> <!-- Link to the Registration page -->
+                    <p>Don't have an account?<a href="register.php"> Register</a></p> <!-- Link to the Registration page -->
                 </div>
                 <!-- Submit Button -->
                 <div>
