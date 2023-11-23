@@ -86,6 +86,11 @@ if (isset($_POST['change_password']))
     
 }
 
+if (isset($_POST['delete_account'])) 
+{
+    header("Location: delete_account.php"); exit();
+}
+
 ?>
 
 
@@ -140,8 +145,11 @@ if (isset($_POST['change_password']))
 
                 </div>
                 <button type="submit" name="change_password">Change Password</button> <!-- Button to save user profile changes -->
-
+                <hr/>
+                <button type="submit" name="delete_account">Delete My Account</button>
             </form>
+
+                
         </div>
     </main>
 </body>
