@@ -104,8 +104,8 @@ if (isset($_POST['submit']))
             <h2>Me</h2> <!-- Heading for user's profile links -->
             <ul>
                 <li><?= $_SESSION['username'] ?> </li> <!-- Displaying the username -->
-                <li><a href="my_profile.html">Edit Profile</a></li> <!-- Link to edit user's profile -->
-                <li><a href="login.html">Sign out</a></li> <!-- Link to sign out from the account -->
+                <li><a href="my_profile.php">Edit Profile</a></li> <!-- Link to edit user's profile -->
+                <li><a href="login.php">Sign out</a></li> <!-- Link to sign out from the account -->
             </ul>
         </div>
 

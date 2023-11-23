@@ -93,6 +93,7 @@ if (isset($_POST['submit']))
                 <!-- Register Link -->
                 <div class='loginlinks'> <!-- Container for the "Register" link -->
                     <p>Don't have an account?<a href="register.php"> Register</a></p> <!-- Link to the Registration page -->
+                    <p>Don't have an account?<a href="register.php"> Register</a></p> <!-- Link to the Registration page -->
                 </div>
                 <!-- Submit Button -->
                 <div>
