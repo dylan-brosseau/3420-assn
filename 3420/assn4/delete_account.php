@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
+<!-- delete_account.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,7 @@ if (isset($_POST['submit'])) {
         <p>Are you sure you want to delete your account? This action cannot be undone.</p>
 
         <!-- Assign an id to the form -->
-        <form id="deleteAccountForm" method="post" action="">
+        <form method="post" action="" id="deleteForm">
             <button type="submit" name="submit">Delete Account</button>
         </form>
     </main>
