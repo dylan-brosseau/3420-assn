@@ -64,7 +64,7 @@ if (isset($_POST['submit']))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/assn.css" /> <!-- Including an external CSS file -->
-
+    <!--M-changes--> <script defer src="scripts/edit_item.js"></script>
     <title>Edit List Item</title> <!-- Setting the page title -->
 </head>
 
@@ -84,13 +84,14 @@ if (isset($_POST['submit']))
             <div>
                 <input type="text" id="title" name="title" value="<?= $entry['entry_name']?>" required> <!-- Input field for the title of the list item -->
                 <span class="error <?= !isset($errors['title']) ? 'hidden' : '' ?>">Invalid title</span>
-
             </div>
             
             <div>
-                <textarea id="description" name="description" required><?= $entry['description']?></textarea> 
+                <!--M-changes-->
+                <textarea id="description" name="description" maxlength="2500" required><?= $entry['description']?></textarea> 
                 <span class="error <?= !isset($errors['description']) ? 'hidden' : '' ?>">Invalid description</span>
-
+                <!--M-changes-->
+                <span id="char-display"></span>
             </div>
     
             <fieldset class="edititemset">

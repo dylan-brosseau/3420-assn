@@ -7,6 +7,7 @@ $must_be_unique = array();
 
 $name = $_POST['name']?? "";
 $username         = $_POST['username'] ?? "";
+
 $email        = $_POST['email'] ?? "";
 $password  = $_POST['password'] ?? null;
 $c_password  = $_POST['c_password'] ?? null;
@@ -76,17 +77,20 @@ if (isset($_POST['submit']))
     <meta charset="utf-8"> <!-- Character encoding for the document -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Setting the viewport for responsive design -->
     <link rel="stylesheet" href="./css/assn.css" /> <!-- Including an external CSS file for styling -->
+    <!--M-change-->  <script defer src="scripts/register.js"></script>
     <title>User Registration</title> <!-- Setting the page title -->
 </head>
 
 <body class="register"> <!-- Assigning a class to the body element for styling -->
     <main>
-        <a href="login.html">Back to Login Page</a> <!-- Link to return to the login page -->
+        <!--M-changes-->
+        <a href="login.php">Back to Login Page</a> <!-- Link to return to the login page -->
         <div class="registerpage"> <!-- Stylish container for the registration form -->
             <h1>User Registration</h1> <!-- Heading for the registration section -->
 
             <!-- User Information -->
-            <form name="register" method="post">
+            <!--M-change -->
+            <form name="register" id="register-form" method="post">
 
                 <div class="registerinfo">
                     <div>
@@ -121,16 +125,23 @@ if (isset($_POST['submit']))
                         <!-- Input field for entering an email address (required) -->
                     </div>
                 
+                    <!--M-Changes -->
                     <div>
                         <input type="password" id="password" name="password" placeholder="Password" required >
                         <!-- Password will not be sticky-->
+                        <label for="toggle-vis">Show Password</label>
+                        <input type="checkbox" id="toggle-vis" onclick="togglePass()">
+                        <span id ="pass-indicate"><span>
                     </div>
-                    
-            
+                    <!--M-Changes -->
+
+                    <!--M-Changes -->
                     <div>
                         <input type="password" id="c_password" name="c_password" placeholder="Confirm Password" >
                         <!-- Confirm password will also not be sticky -->
+                        <span id ="match-indicate"><span>
                     </div>
+                    <!--M-Changes -->
                 </div>
 
                 <!-- List Information -->

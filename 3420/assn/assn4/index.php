@@ -72,10 +72,19 @@ if (isset($_POST['submit']))
 <head>
     <meta charset="utf-8"> <!-- Character encoding for the document -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Setting the viewport for responsive design -->
-    <link rel="stylesheet" href="./css/assn.css" /> <!-- Including an external CSS file for styling -->
+    <link rel="stylesheet" href='./css/test.css' /> <!-- Including an external CSS file for styling -->
+    <!--M-Chnages--> <script defer src="scripts/index.js"></script>
     <title>Index</title> <!-- Setting the page title -->
 </head>
 <body class="index_page">
+     <!-- Modal Structure -->
+     <div id="myModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Item Details</h2>
+            <p id="itemDetails">Details go here...</p>
+        </div>
+    </div>
     
     <?php include './includes/nav.php'?>
 
@@ -118,10 +127,15 @@ if (isset($_POST['submit']))
                 if ($list_details[0]['access'] == 'public') {
                     $url = 'https://loki.trentu.ca/~dylanbrosseau/3420/assn/assn3/list.php?id=' . $list_details[0]['id'];
                     ?>
-                    <a href="<?=$url?>"><?=$url?></a>
+                    <!--M-changes-->
+                    <a href="<?=$url?>" id="page-link"><?=$url?></a> <!--The link doesnt need to be the link-->
                     <?php
                 }
-?>
+                ?>
+
+            <!--M-Changes-->
+            <button id="copy-link-btn" onclick="Link_to_Clip()">Add Link to Clipboard</button>
+            <span id="page-copy-msg"></span>
 
             <p><strong>List Description:</strong></p> <!-- Displaying a description of the list -->
             <p><?= $list_details[0]['description']?></p>
@@ -143,7 +157,7 @@ if (isset($_POST['submit']))
                         echo "<p><strong>Entry:</strong> " . $entry["entry_name"]. "</p>";
                         echo "<p><strong>Description:</strong> " . $entry["description"]. "</p>";
                         echo "<p><strong>Status:</strong> " . $entry["status"]. "</p>";
-                        echo "<p><a href='view_item.php?param={$entry['id']}'>View Details</a> | <a href='edit_item.php?param={$entry['id']}'>Edit</a> | <a href='delete_item.php?param={$entry['id']}'>Delete</a></p>";
+                        echo "<p><a href='#' class='view-details' data-entry-id='{$entry['id']}'>View Details</a></p> | <a href='edit_item.php?param={$entry['id']}'>Edit</a> | <a href='delete_item.php?param={$entry['id']}' class='delete-item' data-entry-id='{$entry['id']}'>Delete</a></p>";
                         echo "</li>";
                     }
                 }
@@ -169,6 +183,9 @@ if (isset($_POST['submit']))
             </form>
         </div>
     </div>
-    <!-- Option to add a new list item -->
+
+   
+    <script defer src="./scripts/confirm_delete.js"></script>
+
 </body>
 </html>
