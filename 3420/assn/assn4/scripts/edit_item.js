@@ -33,3 +33,41 @@ textArea.addEventListener('input', function () {
 
     charCountDisplay.textContent = charactersLeft >= 0 ? `${charactersLeft} characters left` : 'Character limit exceeded!';
 });
+
+
+// form validation
+
+document.addEventListener('DOMContentLoaded', function() {
+    const editForm = document.getElementById('edit-form');
+
+    if (editForm) {
+        const titleInput = document.getElementById('title');
+        const titleError = document.getElementById('title-error');
+        const descriptionInput = document.getElementById('description');
+        const descriptionError = document.getElementById('description-error');
+
+        editForm.addEventListener('submit', function(event) {
+            let errors = false;
+
+            // Validate title
+            if (!titleInput.value) {
+                titleError.classList.remove('hidden');
+                errors = true;
+            } else {
+                titleError.classList.add('hidden');
+            }
+
+            // Validate description
+            if (!descriptionInput.value) {
+                descriptionError.classList.remove('hidden');
+                errors = true;
+            } else {
+                descriptionError.classList.add('hidden');
+            }
+
+            if (errors) {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    }
+});

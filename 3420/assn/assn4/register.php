@@ -28,18 +28,18 @@ if (isset($_POST['submit']))
 {
     
     // is a username entered
-    if (strlen($username) === 0){ $errors['username'] = true;}
+   // if (strlen($username) === 0){ $errors['username'] = true;}
   
     // check if username is taken
-    $stmt = $pdo->prepare("SELECT username FROM assn_accounts WHERE username = ?");
-    $stmt->execute([$username]);
-    if ($stmt->fetchColumn()) {$must_be_unique['username'] = true;}
+    //$stmt = $pdo->prepare("SELECT username FROM assn_accounts WHERE username = ?");
+    //$stmt->execute([$username]);
+    //if ($stmt->fetchColumn()) {$must_be_unique['username'] = true;}
 
     // email validation
-    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {$errors['email'] = true;}
+    //if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {$errors['email'] = true;}
 
     //password validation
-    if ($password != $c_password) {$errors['password'] = true;}
+    //if ($password != $c_password) {$errors['password'] = true;}
 
 
     
@@ -78,6 +78,7 @@ if (isset($_POST['submit']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Setting the viewport for responsive design -->
     <link rel="stylesheet" href="./css/assn.css" /> <!-- Including an external CSS file for styling -->
     <!--M-change-->  <script defer src="scripts/register.js"></script>
+    
     <title>User Registration</title> <!-- Setting the page title -->
 </head>
 
@@ -99,8 +100,8 @@ if (isset($_POST['submit']))
                           name="username" 
                           placeholder="Username">
                         <!-- Error messages -->
-                        <span class="error <?= !isset($errors['username']) ? 'hidden' : '' ?>">Please enter a valid username.</span>
-                        <span class="error <?= !isset($must_be_unique['username']) ? 'hidden' : '' ?>">This username is taken.</span>
+                        <span class="error hidden" id="username-error">Please enter a valid username.</span>
+                        <span class="error hidden">">This username is taken.</span>
 
                     </div>
                     
@@ -111,6 +112,8 @@ if (isset($_POST['submit']))
                          name="name"
                          placeholder="Name" 
                          value="<?= $name ?>" >
+                         <span class="error hidden" id="name-error">Please enter a valid name.</span>
+
 
                         <!-- Input field for entering a full name (required) -->
                     </div>
@@ -122,6 +125,8 @@ if (isset($_POST['submit']))
                         name="email" 
                         placeholder="Email"
                         value="<?= $email?>" >
+                        <span class="error hidden" id="email-error">Please enter a valid email.</span>
+                        <span class="error hidden">">This email is already in use.</span>
                         <!-- Input field for entering an email address (required) -->
                     </div>
                 

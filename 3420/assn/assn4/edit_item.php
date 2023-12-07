@@ -25,12 +25,7 @@ $rating= $_POST['rating']?? "";
 
 if (isset($_POST['submit']))
 {
-    if (empty($title) || strlen($title) > 255) {
-        $errors['title'] = true;
-    } 
-    if (empty($description) || strlen($description) > 255) {
-        $errors['description'] = true;
-    } 
+    
     if($date == ''){$date = null;}
 
     
@@ -78,18 +73,18 @@ if (isset($_POST['submit']))
        </li> 
     </ul>
     
-    <form method="POST" > <!-- Form for editing list item -->
+    <form method="POST" id="edit-form" > <!-- Form for editing list item -->
         <div class="edititempage">
             <h1>Edit List Item</h1> <!-- Heading for the edit page -->
             <div>
-                <input type="text" id="title" name="title" value="<?= $entry['entry_name']?>" required> <!-- Input field for the title of the list item -->
-                <span class="error <?= !isset($errors['title']) ? 'hidden' : '' ?>">Invalid title</span>
+                <input type="text" id="title" name="title" value="<?= $entry['entry_name']?>"> <!-- Input field for the title of the list item -->
+                <span id="title-error" class="error hidden">Invalid title</span>
             </div>
             
             <div>
                 <!--M-changes-->
-                <textarea id="description" name="description" maxlength="2500" required><?= $entry['description']?></textarea> 
-                <span class="error <?= !isset($errors['description']) ? 'hidden' : '' ?>">Invalid description</span>
+                <textarea id="description" name="description" maxlength="2500"><?= $entry['description']?></textarea> 
+                <span id="description-error" class="error hidden">Invalid description</span>
                 <!--M-changes-->
                 <span id="char-display"></span>
             </div>

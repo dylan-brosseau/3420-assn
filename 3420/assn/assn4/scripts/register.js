@@ -185,17 +185,53 @@ const con_pass          = document.getElementById("c_password");
 
 
 
-//Form
+//Form validation
 
-const voteForm = document.querySelector("#register-form");
+// Form validation
+const checkEmail = str => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
 
-voteForm.addEventListener("submit", (ev) => {
+const registerForm = document.getElementById("register-form");
+if (registerForm) {
+    // Select all of the elements we'll need in order to perform validation.
+    const emailInput = document.getElementById("email");
+    const emailInvalidError = document.getElementById("email-error"); // Changed to getElementById for clarity
 
-    
-    // IF THERE ARE ERRORS, PREVENT FORM SUBMISSION
-    if(errors){
+    const usernameInput = document.getElementById("username");
+    const usernameInvalidError = document.getElementById("username-error"); // Changed to getElementById
 
-        ev.preventDefault();
-        
-    }
-});
+    const nameInput = document.getElementById("name");
+    const nameError = document.getElementById("name-error"); // Changed to getElementById
+
+    registerForm.addEventListener("submit", (ev) => {
+        let errors = false;
+
+        // Check if email is valid and handle appropriately
+        if (!checkEmail(emailInput.value)) {
+            emailInvalidError.classList.remove('hidden'); // Show error
+            errors = true;
+        } else {
+            emailInvalidError.classList.add('hidden'); // Hide error
+        }
+
+        // Check if username is provided
+        if (!usernameInput.value) {
+            usernameInvalidError.classList.remove('hidden'); // Show error
+            errors = true;
+        } else {
+            usernameInvalidError.classList.add('hidden'); // Hide error
+        }
+
+        // Check if name is provided
+        if (!nameInput.value) {
+            nameError.classList.remove('hidden'); // Show error
+            errors = true;
+        } else {
+            nameError.classList.add('hidden'); // Hide error
+        }
+
+        // Prevent form submission if there are errors
+        if (errors) {
+            ev.preventDefault();
+        }
+    });
+}
